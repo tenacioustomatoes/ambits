@@ -8,6 +8,8 @@ import Schedule from './schedule/components/schedule.jsx'
 import CheckinContainer from './checkin/components/checkinContainer.jsx';
 // import DisplayAmbit from './displayAmbit/displayAmbit.jsx';
 
+// import Broadcast from './broadcast/broadcast.jsx';
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Display from './displayAmbit/displayAmbit.jsx';
@@ -30,3 +32,4 @@ render(
     </Route>
   </Router>,
   document.getElementById('app'));
+      // <Route path='/broadcast' component={Broadcast}/>
