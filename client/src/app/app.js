@@ -22,8 +22,7 @@ injectTapEventPlugin();
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
 render((
-  //React-Router with nested routes
-  // CheckinContainer
+
   <Router history={browserHistory}>
     <Route component={Main}>
       <Route path='/' component={HomeView}/>
