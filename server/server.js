@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var ambitHelper = require('./ambitData/ambitHelper.js');
+var ambitHelper = require('./ambits/ambitHelper.js');
 var path = require('path');
 var app = express();
 var mongoose = require('mongoose');
@@ -11,8 +11,9 @@ var passport = require('passport');
 var db = (process.env.MONGOLAB_URL || 'mongodb://localhost/ambits');
 mongoose.connect(db);
 
-var Ambit = require('./ambitData/ambitSchema');
+// var Ambit = require('./ambits/ambitModel');
 var User = require('./users/userModel');
+var LiveStreams = require('./liveStreams/liveStreamModel')
 
 // if (process.env.NODE_ENV !== 'production') {
 //   require('longjohn');
@@ -23,24 +24,24 @@ var ctrlAuth = require('./controllers/authentication');
 require('./config/passport');
 
 
-// if (process.env.NODE_ENV !== 'production') {
-//   const webpack = require('webpack');
-//   const webpackDevMiddleware = require('webpack-dev-middleware');
-//   // const webpackHotMiddleware = require('webpack-hot-middleware');
-//   const config = require('../webpack-dev-server.config.js');
-//   const compiler = webpack(config);
+if (process.env.NODE_ENV !== 'production') {
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  // const webpackHotMiddleware = require('webpack-hot-middleware');
+  const config = require('../webpack-dev-server.config.js');
+  const compiler = webpack(config);
 
-//   // console.log(config.output.publicPath, config.output.path);
-//   app.use(webpackDevMiddleware(compiler, {
-//     publicPath: config.output.publicPath,
-//     stats: { colors: true }
-//   }));
+  // console.log(config.output.publicPath, config.output.path);
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    stats: { colors: true }
+  }));
 
-//   // app.use(webpackHotMiddleware(compiler, {
-//   //   log: console.log
-//   // }));
+  // app.use(webpackHotMiddleware(compiler, {
+  //   log: console.log
+  // }));
 
-// }
+}
 
 
 app.use(bodyParser.json());
@@ -64,6 +65,13 @@ app.get('/ambits', ambitHelper.getAmbits);
 app.post('/ambits', ambitHelper.addAmbit);
 
 app.post('/ambits/:id', ambitHelper.saveCheckIn);
+
+//////////////////////////////////////////////////////////
+// right now we will just store a hash with key ambitId
+// and value {peerId: peerId, username: username}
+// stored in server memory for now
+/////////////////////////////////////////////////////////
+app.get('/live')
 
 app.post('/register', ctrlAuth.register);
 app.post('/login', ctrlAuth.login);

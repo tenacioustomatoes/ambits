@@ -77,6 +77,10 @@ const decorateAmbits = function(ambits) {
 const url = '';
 
 //public functions:
+export const getPeersFromServer = function () {
+
+};
+
 export const postCheckin = function (ambitId, callback) {
   axios({
     method:'post',

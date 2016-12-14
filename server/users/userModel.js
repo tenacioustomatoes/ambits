@@ -2,6 +2,8 @@ var Q = require('q');
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 
+var ambitSchema = require('../ambits/ambitModel');
+
 var userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -14,7 +16,8 @@ var userSchema = new mongoose.Schema({
   },
   password: String,
   salt: String,
-  friend_ids: [String]
+  friend_ids: [String],
+  live: [ambitSchema]
 });
 
 // var FriendsSchema = new mongoose.Schema({
@@ -49,4 +52,5 @@ userSchema.methods.validPassword = function (password) {
   return this.password === hash;
 };
 
-mongoose.model('User', userSchema);
+var User = mongoose.model('User', userSchema);
+module.exports = User;
