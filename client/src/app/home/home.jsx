@@ -77,10 +77,9 @@ export default class HomeView extends React.Component {
           </SwipeableViews>
         </div>
         <RaisedButton
-        label ={<Link to='/schedule' style ={linkStyle} >Create Ambet </Link> }
+        label ={<Link to='/schedule' style ={linkStyle} >Create</Link> }
         buttonStyle={actionStyle}
         primary = {true}
-        //containerElement={<Link to='/schedule'/>}
         fullWidth={false}
         ></RaisedButton>
       </div>
