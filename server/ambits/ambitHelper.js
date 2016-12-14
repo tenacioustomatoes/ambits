@@ -1,4 +1,4 @@
-var Ambit = require('./ambitSchema.js');
+var Ambit = require('./ambitModel.js');
 var q = require('q');
 
 var findAmbit = q.nbind(Ambit.findOne, Ambit);

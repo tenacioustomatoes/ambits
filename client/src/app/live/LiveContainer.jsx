@@ -42,7 +42,8 @@ export default class LiveContainer extends React.Component {
     super();
     this.state = {
       hasStream: false,
-      src: null: 
+      src: null, 
+      peerId: null
     };
   }
 
