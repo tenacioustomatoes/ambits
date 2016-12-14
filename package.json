@@ -7,9 +7,7 @@
     "example": "webpack-dev-server --config webpack-dev-server.config.js --progress --hot --inline --colors",
     "client-start": "webpack -d --watch",
     "start": "node server/server.js",
-    "test": "node server/server.js & mocha server/specs/; pkill -n node",
-    "build": "webpack --config webpack-production.config.js --progress --colors",
-    "postinstall": "npm run build"
+    "test": "node server/server.js & mocha server/specs/; pkill -n node"
   },
   "repository": {
     "type": "git",
@@ -35,6 +33,7 @@
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
     "react-tap-event-plugin": "^2.0.1",
+    "react-webcam": "0.0.14",
     "webpack": "^1.14.0"
   },
   "bugs": {

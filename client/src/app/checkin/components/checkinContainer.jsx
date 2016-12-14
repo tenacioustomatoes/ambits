@@ -108,7 +108,7 @@ export default class CheckinContainer extends React.Component {
             <RaisedButton 
             // onTouchTap={this.handleCreateAmbit} 
             buttonStyle={createStyle}
-            containerElement={<Link to='/map'/>}
+            containerElement={<Link to='/broadcast'/>}
             fullWidth = {true}
             >Create Ambit</RaisedButton>
             

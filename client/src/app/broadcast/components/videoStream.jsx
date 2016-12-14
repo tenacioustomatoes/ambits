@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Utils from '../../utils/utils.js';
-import AmbitList from './ambitList.jsx';
+
 import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -9,42 +9,48 @@ import Snackbar from 'material-ui/Snackbar';
 import {Router, Route, Link} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 
+const videoStyle = {
+  width: '320px',
+  maxWidth: '100%',
+};
+
+
 export default class VideoStream extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       constraints: { audio: false, video: true },
-      video: 
+      stream: {},
+      video: null
     };
+
+    this.successCallback = this.successCallback.bind(this);
   }
 
-navigator.getUserMedia = navigator.getUserMedia ||
-    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-
-var video = document.querySelector('video');
-
-function successCallback(stream) {
-  window.stream = stream; // stream available to console
-  if (window.URL) {
-    video.src = window.URL.createObjectURL(stream);
-  } else {
-    video.src = stream;
+  componentDidMount() {
+    this.getVideo();
   }
-}
 
-function errorCallback(error) {
-  console.log('navigator.getUserMedia error: ', error);
-}
+  successCallback(stream) {
+    this.setState({
+      stream: stream,
+      video: stream.getTracks()[0].id
+    });
+  }
 
-navigator.getUserMedia(constraints, successCallback, errorCallback);
+  errorCallback(error) {
+    console.log('navigator.getUserMedia error: ', error);
+  }
+
+  getVideo() {
+    navigator.getUserMedia(this.state.constraints, this.successCallback, this.errorCallback);
+  };
 
   render() {
     return (
       <div>
        <h1>User Video</h1> 
-       <video id='localVideo' autoplay></video>
-       <script src={this.></script>
+       <video autoPlay src={'blob:http://127.0.0.1:3000/' + this.state.video}></video>
       </div>
     );
   }
