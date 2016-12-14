@@ -19,3 +19,8 @@ body {
 .hidden {
   display: none;
 }
+
+video {
+  width: 320px;
+  max-width: 100%;
+}

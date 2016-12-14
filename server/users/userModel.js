@@ -13,9 +13,20 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   password: String,
-  salt: String
+  salt: String,
+  friend_ids: [String]
 });
 
+// var FriendsSchema = new mongoose.Schema({
+//   username: {
+//     type: String,
+//     unique: true,
+//     required: true
+//   }
+//   friendAmbitIds: {
+//     type: String
+//   }
+// })
 
 userSchema.pre('save', function (next) {
   var user = this;
