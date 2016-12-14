@@ -16,17 +16,27 @@ const createPeerConnection = () => {
     ]}
   });
 
-  var peerId = peer.id;
+  var peerId, conn;
+  // console.log('Peer ID is', peerId['id']);
 
-  var conn = peer.connect(peerId, {metadata: {
-    'username': 'Emerson' //username
-  }});
 
-  // peer.on('open', () => {
-  //   axios.post('/broadcast', {peerId: peerId})
-  //   .then(response => console.log(response))
-  //   .catch(err => console.error('Error posting peer ID to server', err));
-  // });
+  peer.on('open', (id) => {
+    peerId = id;
+    console.log('Peer ID is', peerId);
+    console.log(peer);
+    conn = peer.connect(peerId, {metadata: {
+      'username': 'Emerson' //username
+    }});
+    // conn = peer.connect(peerId, {metadata: {
+    //   'username': 'Emerson' //username
+    // }});
+    // axios.post('/broadcast', {peerId: peerId})
+    // .then(response => console.log(response))
+    // .catch(err => console.error('Error posting peer ID to server', err));
+  });
+  // conn = peer.connect(peerId, {metadata: {
+  //   'username': 'Emerson' //username
+  // }});
   
 
   function getVideo(callback){
@@ -38,6 +48,7 @@ const createPeerConnection = () => {
 
   getVideo(stream => {
     window.localStream = stream;
+    console.log(window.localStream);
     // onReceiveStream(stream, 'my-camera');
   });
 
