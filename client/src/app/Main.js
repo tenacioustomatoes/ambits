@@ -24,6 +24,7 @@ const styles = {
 const muiTheme = getMuiTheme({
   palette: {
     accent1Color: deepOrange500,
+    primary1Color: '#f91b22'
   },
 });
 
