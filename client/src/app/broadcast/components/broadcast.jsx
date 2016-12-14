@@ -13,13 +13,21 @@ import Snackbar from 'material-ui/Snackbar';
 import {Router, Route, Link} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import CreatePeerConnection from '../../utils/createPeerConnection.js';
+import CommitButton from './commitButton.jsx';
+
 export default class BroadcastContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.createPeerConnection = createPeerConnection.bind(this);
+  }
 
   render() {
     return (
       <div>
        <h1>User Video</h1> 
         <Webcam />
+        <CommitButton CreatePeerConnection={CreatePeerConnection}/>
       </div>
     );
   }
