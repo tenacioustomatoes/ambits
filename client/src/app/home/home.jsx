@@ -4,6 +4,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
+import AmbitGeneric from '../ambitGeneric/ambitGeneric.jsx';
 
 const styles = {
   headline: {
@@ -30,7 +31,7 @@ const actionStyle = {
 
 const linkStyle = {
   color:'white',
-  'text-decoration':'none'
+  textDecoration:'none'
 };
 
 export default class HomeView extends React.Component {
@@ -72,7 +73,9 @@ export default class HomeView extends React.Component {
               slide n°2
             </div>
             <div style={styles.slide}>
-              slide n°3
+              <AmbitGeneric></AmbitGeneric>
+              <AmbitGeneric></AmbitGeneric>
+              <AmbitGeneric></AmbitGeneric>
             </div>
           </SwipeableViews>
         </div>

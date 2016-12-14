@@ -16,7 +16,7 @@ const actionStyle = {
 
 const linkStyle = {
   color:'white',
-  'text-decoration':'none'
+  textDecoration:'none'
 };
 
 var Coords = {
