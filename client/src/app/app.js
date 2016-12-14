@@ -6,6 +6,7 @@ import Main from './Main'; // Our custom react components
 import Map from './map/map.jsx';
 import Schedule from './schedule/components/schedule.jsx'
 import CheckinContainer from './checkin/components/checkinContainer.jsx';
+import HomeView from './home/home.jsx';
 // import DisplayAmbit from './displayAmbit/displayAmbit.jsx';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -20,10 +21,10 @@ injectTapEventPlugin();
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
 render(
   //React-Router with nested routes
+  // CheckinContainer
   <Router history={browserHistory}>
     <Route component={Main}>
-
-      <Route path='/' component={CheckinContainer}/>
+      <Route path='/' component={HomeView}/>
       <Route path='/schedule' component={Schedule}/>
       <Route path='/map' component={Map}/>
       <Route path='/display' component={Display}/>

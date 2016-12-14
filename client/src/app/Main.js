@@ -44,7 +44,7 @@ class Main extends Component {
   }
 
   render() {
-    const logOutButton = this.state.isLoggedIn ? 
+    const logOutButton = this.state.isLoggedIn ?
       (<FlatButton label="Logout"
         onTouchTap={this.handleLogout.bind(this)}
        />
@@ -56,7 +56,7 @@ class Main extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <AppBar 
+          <AppBar
             title='Ambitually'
             iconElementRight={logOutButton}
           />
