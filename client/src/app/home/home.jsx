@@ -39,6 +39,16 @@ const broadcastStyle = {
   width:'240px',
   transform: 'translate(-50%, -50%)'
 };
+const streamStyle = {
+  color: 'white',
+  backgroundColor:'purple',
+  position: 'fixed',
+  top: '95%',
+  left: '50%',
+  height:'50px',
+  width:'240px',
+  transform: 'translate(-50%, -50%)'
+};
 
 const linkStyle = {
   color:'white',
@@ -99,6 +109,11 @@ export default class HomeView extends React.Component {
         containerElement={<Link to='/broadcast'/>}
         fullWidth = {true}
         >BROADCAST</RaisedButton>
+        <RaisedButton
+        buttonStyle={streamStyle}
+        containerElement={<Link to='/live'/>}
+        fullWidth = {true}
+        >STREAM</RaisedButton>
       </div>
     );
   }
