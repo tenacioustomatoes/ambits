@@ -10,7 +10,7 @@ import HomeView from './home/home.jsx';
 // import DisplayAmbit from './displayAmbit/displayAmbit.jsx';
 
 import Broadcast from './broadcast/components/broadcast.jsx';
-import LiveStream from './liveStreams/liveStream.jsx';
+import LiveStream from './liveStreams/LiveStream.jsx';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 

@@ -63,4 +63,12 @@ export default class LiveStream extends React.Component {
       ]}
     });
   }
+
+  render() {
+    return (
+      <div> 
+        STREAM
+      </div>
+    );
+  }
 }
