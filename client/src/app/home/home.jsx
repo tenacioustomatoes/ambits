@@ -29,6 +29,16 @@ const actionStyle = {
   width:'240px',
   transform: 'translate(-50%, -50%)'
 };
+const broadcastStyle = {
+  color: 'white',
+  backgroundColor:'purple',
+  position: 'fixed',
+  top: '90%',
+  left: '50%',
+  height:'50px',
+  width:'240px',
+  transform: 'translate(-50%, -50%)'
+};
 
 const linkStyle = {
   color:'white',
@@ -58,9 +68,9 @@ export default class HomeView extends React.Component {
               onChange={this.handleChange}
               value={this.state.slideIndex}
               >
-              <Tab label="Tab One" value={0} />
-              <Tab label="Tab Two" value={1} />
-              <Tab label="Tab Three" value={2} />
+              <Tab label="LIVE FEED" value={0} />
+              <Tab label="UPCOMING" value={1} />
+              <Tab label="MY AMBETS" value={2} />
             </Tabs>
             <SwipeableViews
               index={this.state.slideIndex}
@@ -84,6 +94,11 @@ export default class HomeView extends React.Component {
         primary = {true}
         fullWidth={false}
         ></RaisedButton>
+        <RaisedButton
+        buttonStyle={broadcastStyle}
+        containerElement={<Link to='/broadcast'/>}
+        fullWidth = {true}
+        >BROADCAST</RaisedButton>
       </div>
     );
   }

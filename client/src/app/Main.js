@@ -23,8 +23,8 @@ const styles = {
 
 const muiTheme = getMuiTheme({
   palette: {
-    accent1Color: deepOrange500,
-    primary1Color: '#f91b22'
+    accent1Color: '#a7a7a7',
+    primary1Color: '#e41017'
   },
 });
 
@@ -58,7 +58,7 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <AppBar
-            title='Ambitually'
+            title='Ambet'
             iconElementRight={logOutButton}
           />
           {LoginModal}
