@@ -62,7 +62,9 @@ const createPeerConnection = () => {
     .catch(err => console.error('Error sending delete request to server', err));
   });
 
-  setTimeout(() => peer.destroy(), 5000);
+  peer.on('connection', (conn) => {
+    console.log('connect!!!', conn);
+  });
 
 };
 
