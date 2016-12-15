@@ -18,6 +18,4 @@ var ambitSchema = new Schema({
 
 var Ambit = mongoose.model('Ambit', ambitSchema);
 
-module.exports.ambitSchema = ambitSchema;
-
-
+module.exports = Ambit;
