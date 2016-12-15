@@ -49,6 +49,7 @@ const createPeerConnection = () => {
 
 
   peer.on('call', call => {
+    console.log('getting called');
     onReceiveCall(call);
   });
 
@@ -57,12 +58,18 @@ const createPeerConnection = () => {
   }
 
   peer.on('close', () => {
-    axios.delete('/live', {peerId: peerId})
+    axios.post('/liveDelete', {peerId: peerId})
     .then(response => console.log(response))
     .catch(err => console.error('Error sending delete request to server', err));
   });
 
-  setTimeout(() => peer.destroy(), 5000);
+  peer.on('connection', (conn) => {
+    var forrest = conn.peer;
+    console.log(conn.peer);
+    console.log(window.localStream);
+    peer.call(forrest, window.localStream, {metadata: {name: 'emerson!'}});
+    console.log('calling forrest...');
+  });
 
 };
 
