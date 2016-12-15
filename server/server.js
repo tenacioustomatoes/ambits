@@ -1,11 +1,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var ambitHelper = require('./ambits/ambitHelper.js');
+var ambitHelper = require('./ambits/ambitHelper');
+var liveStreamHelper = require('./liveStreams/liveStreamHelper')
 var path = require('path');
-var app = express();
 var mongoose = require('mongoose');
 var passport = require('passport');
 
+var app = express();
 // To use on Heroku, set the environment variable:
 // $ heroku set:config MONGOLAB_URL=mongodb://user:password@mongolabstuff
 var db = (process.env.MONGOLAB_URL || 'mongodb://localhost/ambits');
@@ -13,7 +14,7 @@ mongoose.connect(db);
 
 // var Ambit = require('./ambits/ambitModel');
 var User = require('./users/userModel');
-var LiveStreams = require('./liveStreams/liveStreamModel');
+// var LiveStreams = require('./liveStreams/liveStreamModel');
 var Ambit = require('./ambits/ambitModel');
 
 // if (process.env.NODE_ENV !== 'production') {
@@ -25,24 +26,24 @@ var ctrlAuth = require('./controllers/authentication');
 require('./config/passport');
 
 
-// if (process.env.NODE_ENV !== 'production') {
-//   const webpack = require('webpack');
-//   const webpackDevMiddleware = require('webpack-dev-middleware');
-//   // const webpackHotMiddleware = require('webpack-hot-middleware');
-//   const config = require('../webpack-dev-server.config.js');
-//   const compiler = webpack(config);
+if (process.env.NODE_ENV !== 'production') {
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  // const webpackHotMiddleware = require('webpack-hot-middleware');
+  const config = require('../webpack-dev-server.config.js');
+  const compiler = webpack(config);
 
-//   // console.log(config.output.publicPath, config.output.path);
-//   app.use(webpackDevMiddleware(compiler, {
-//     publicPath: config.output.publicPath,
-//     stats: { colors: true }
-//   }));
+  // console.log(config.output.publicPath, config.output.path);
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    stats: { colors: true }
+  }));
 
-//   // app.use(webpackHotMiddleware(compiler, {
-//   //   log: console.log
-//   // }));
+  // app.use(webpackHotMiddleware(compiler, {
+  //   log: console.log
+  // }));
 
-// }
+}
 
 
 app.use(bodyParser.json());
@@ -72,9 +73,9 @@ app.post('/ambits/:id', ambitHelper.saveCheckIn);
 // and value {peerId: peerId, username: username}
 // stored in server memory for now
 /////////////////////////////////////////////////////////
-// app.get('/live');
-app.post('/live', ambitHelper.addLiveStream);
-// app.delete('/live', ambitHelper.removeLiveStream);
+// app.get('/live', liveStreamHelper.retrieveAllLiveStreams);
+app.post('/live', liveStreamHelper.addLiveStream);
+app.post('/live/delete', liveStreamHelper.removeLiveStream);
 
 app.post('/register', ctrlAuth.register);
 app.post('/login', ctrlAuth.login);
