@@ -43,5 +43,5 @@ jspm_packages
 **/.DS_Store
 
 # ignore webpack workaround
-app/client/www/app.js
+client/src/www/app.js
 
