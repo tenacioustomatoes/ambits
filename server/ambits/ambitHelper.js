@@ -1,9 +1,13 @@
 var Ambit = require('./ambitModel.js');
 var q = require('q');
+var Live = require('./liveModel.js');
 
 var findAmbit = q.nbind(Ambit.findOne, Ambit);
 var findAllAmbits = q.nbind(Ambit.find, Ambit);
 var createAmbit = q.nbind(Ambit.create, Ambit);
+
+var createLiveStream = q.nbind(Live.create, Live);
+// var deleteLiveStream = q.nbind(Live.remove, Live);
 
 module.exports.addAmbit = function (req, res, next) {
   //records a new ambit from the user
@@ -63,3 +67,33 @@ module.exports.getAmbits = function(req, res, next) {
       next(error);
     });
 };
+
+module.exports.addLiveStream = function(req, res, next) {
+  var peerId = req.body.peerId;
+  var user = req.body.user;
+  var ambitId = req.body.ambitId;
+  createLiveStream({
+    user: user,
+    ambitId: ambitId,
+    peerId: peerId
+  })
+  .then(function(addedLive) {
+    console.log('Stream saved:', peerId);
+    res.send(addedLive);
+  })
+  .fail(function(error) {
+    console.error('Error saving live stream to DB', error);
+  });
+};
+
+// module.exports.removeLiveStream = function(req, res, next) {
+//   var peerId = req.body.peerId;
+//   deleteLiveStream({peerId: peerId})
+//   .then(function(deletedLive) {
+//     console.log('Stream delete:', peerId);
+//     res.send(deletedLive);
+//   })
+//   .fail(function(error) {
+//     console.error('Error deleting live stream from DB', error);
+//   });
+// };
