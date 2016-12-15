@@ -13,7 +13,8 @@ mongoose.connect(db);
 
 // var Ambit = require('./ambits/ambitModel');
 var User = require('./users/userModel');
-var LiveStreams = require('./liveStreams/liveStreamModel')
+var LiveStreams = require('./liveStreams/liveStreamModel');
+var Ambit = require('./ambits/ambitModel');
 
 // if (process.env.NODE_ENV !== 'production') {
 //   require('longjohn');
@@ -24,24 +25,24 @@ var ctrlAuth = require('./controllers/authentication');
 require('./config/passport');
 
 
-if (process.env.NODE_ENV !== 'production') {
-  const webpack = require('webpack');
-  const webpackDevMiddleware = require('webpack-dev-middleware');
-  // const webpackHotMiddleware = require('webpack-hot-middleware');
-  const config = require('../webpack-dev-server.config.js');
-  const compiler = webpack(config);
+// if (process.env.NODE_ENV !== 'production') {
+//   const webpack = require('webpack');
+//   const webpackDevMiddleware = require('webpack-dev-middleware');
+//   // const webpackHotMiddleware = require('webpack-hot-middleware');
+//   const config = require('../webpack-dev-server.config.js');
+//   const compiler = webpack(config);
 
-  // console.log(config.output.publicPath, config.output.path);
-  app.use(webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-    stats: { colors: true }
-  }));
+//   // console.log(config.output.publicPath, config.output.path);
+//   app.use(webpackDevMiddleware(compiler, {
+//     publicPath: config.output.publicPath,
+//     stats: { colors: true }
+//   }));
 
-  // app.use(webpackHotMiddleware(compiler, {
-  //   log: console.log
-  // }));
+//   // app.use(webpackHotMiddleware(compiler, {
+//   //   log: console.log
+//   // }));
 
-}
+// }
 
 
 app.use(bodyParser.json());

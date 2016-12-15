@@ -1,11 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 
-import LiveStream from './LiveStream.jsx';
-
 import peer from '../utils/createPeerConnection.js'
 
-export default class LiveContainer extends React.Component {
+export default class LiveStream extends React.Component {
 	static defaultProps = {
 		audio: true, 
 		height: 480,
@@ -43,15 +41,12 @@ export default class LiveContainer extends React.Component {
     this.state = {
       hasStream: false,
       src: null, 
-      peerId: null
+      peerId: null,
+      peers: []
     };
   }
 
   componentDidMount() {
-  	if (!hasGetUserMedia()) return;
-
-  	Webcam.mountedInstances.push(this);
-
-  	if (!this.state.hasUserMedia && !Webcam.userMediaRequested)
+  	this.state.peers 
   }
 }

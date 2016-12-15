@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var ambitSchema = require('../ambits/ambitModel')
 
 var liveSchema = new Schema({
-  liveAmbits: [ambitSchema]
+  uId: String,
+  ambitId: String
 });
 
 var LiveStreams = mongoose.model('LiveStreams', liveSchema);
