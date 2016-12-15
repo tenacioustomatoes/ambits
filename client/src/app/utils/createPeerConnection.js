@@ -64,11 +64,7 @@ const createPeerConnection = () => {
   });
 
   peer.on('connection', (conn) => {
-    var forrest = conn.peer;
-    console.log(conn.peer);
-    console.log(window.localStream);
-    peer.call(forrest, window.localStream, {metadata: {name: 'emerson!'}});
-    console.log('calling forrest...');
+    peer.call(conn.peer, window.localStream);
   });
 
 };
