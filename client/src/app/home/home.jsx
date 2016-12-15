@@ -5,6 +5,7 @@ import SwipeableViews from 'react-swipeable-views';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 import OwnAmbitView from './components/ownAmbitView/ownAmbitView.jsx';
+import Feed from '../feed/Feed.jsx';
 
 
 const styles = {
@@ -21,19 +22,19 @@ const styles = {
 
 const actionStyle = {
   color: 'white',
-  backgroundColor:'purple',
+  backgroundColor:'blue',
   position: 'fixed',
-  top: '80%',
-  left: '50%',
+  top: '95%',
+  left: '20%',
   height:'50px',
   width:'240px',
   transform: 'translate(-50%, -50%)'
 };
 const broadcastStyle = {
   color: 'white',
-  backgroundColor:'purple',
+  backgroundColor:'blue',
   position: 'fixed',
-  top: '90%',
+  top: '95%',
   left: '50%',
   height:'50px',
   width:'240px',
@@ -41,10 +42,10 @@ const broadcastStyle = {
 };
 const streamStyle = {
   color: 'white',
-  backgroundColor:'purple',
+  backgroundColor:'blue',
   position: 'fixed',
   top: '95%',
-  left: '50%',
+  left: '80%',
   height:'50px',
   width:'240px',
   transform: 'translate(-50%, -50%)'
@@ -91,7 +92,7 @@ export default class HomeView extends React.Component {
                 Swipe to see the next slide.<br />
             </div>
             <div style={styles.slide}>
-              slide n°2
+              <Feed /> 
             </div>
             <div style={styles.slide}>
               <OwnAmbitView></OwnAmbitView>
@@ -99,19 +100,19 @@ export default class HomeView extends React.Component {
           </SwipeableViews>
         </div>
         <RaisedButton
-        label ={<Link to='/schedule' style ={linkStyle} >Create</Link> }
+        label ={<Link to='/schedule' style={linkStyle} >Create</Link> }
         buttonStyle={actionStyle}
         primary = {true}
         fullWidth={false}
         ></RaisedButton>
         <RaisedButton
         buttonStyle={broadcastStyle}
-        containerElement={<Link to='/broadcast'/>}
+        containerElement={<Link style={linkStyle} to='/broadcast'/>}
         fullWidth = {true}
         >BROADCAST</RaisedButton>
         <RaisedButton
         buttonStyle={streamStyle}
-        containerElement={<Link to='/live'/>}
+        containerElement={<Link style={linkStyle} to='/live'/>}
         fullWidth = {true}
         >STREAM</RaisedButton>
       </div>
