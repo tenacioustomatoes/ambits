@@ -49,6 +49,7 @@ const createPeerConnection = () => {
 
 
   peer.on('call', call => {
+    console.log('getting called');
     onReceiveCall(call);
   });
 
@@ -57,13 +58,13 @@ const createPeerConnection = () => {
   }
 
   peer.on('close', () => {
-    axios.delete('/live', {peerId: peerId})
+    axios.post('/liveDelete', {peerId: peerId})
     .then(response => console.log(response))
     .catch(err => console.error('Error sending delete request to server', err));
   });
 
   peer.on('connection', (conn) => {
-    console.log('connect!!!', conn);
+    peer.call(conn.peer, window.localStream);
   });
 
 };
