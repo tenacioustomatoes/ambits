@@ -1,7 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 
-import peer from '../utils/createPeerConnection.js'
+import Peer from 'peerjs';
+
+var peer = new Peer({
+    key: '7inh9zl1wy9l766r',
+    debug: 3,
+    config: {'iceServers': [
+    { url: 'stun:stun1.l.google.com:19302' },
+    { url: 'turn:numb.viagenie.ca',
+      credential: 'muazkh', username: 'webrtc@live.com' }
+    ]}
+  });
 
 export default class LiveStream extends React.Component {
 	static defaultProps = {
@@ -32,10 +42,6 @@ export default class LiveStream extends React.Component {
     className: PropTypes.string
   };
 
-  static mountedInstances = [];
-
-  static userMediaRequested = false;
-
   constructor() {
     super();
     this.state = {
@@ -47,6 +53,14 @@ export default class LiveStream extends React.Component {
   }
 
   componentDidMount() {
-  	this.state.peers 
+  	this.state.peer = new Peer({
+      key: '7inh9zl1wy9l766r',
+      debug: 3,
+      config: {'iceServers': [
+      { url: 'stun:stun1.l.google.com:19302' },
+      { url: 'turn:numb.viagenie.ca',
+      credential: 'muazkh', username: 'webrtc@live.com' }
+      ]}
+    });
   }
 }
