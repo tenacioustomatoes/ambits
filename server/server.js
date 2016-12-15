@@ -67,6 +67,7 @@ app.get('/ambits', ambitHelper.getAmbits);
 app.post('/ambits', ambitHelper.addAmbit);
 
 app.post('/ambits/:id', ambitHelper.saveCheckIn);
+app.put('/ambits/:id', ambitHelper.addComment);
 
 //////////////////////////////////////////////////////////
 // right now we will just store a hash with key ambitId

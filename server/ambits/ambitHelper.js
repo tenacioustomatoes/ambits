@@ -2,9 +2,11 @@ var Ambit = require('./ambitModel.js');
 var q = require('q');
 var Live = require('./liveModel.js');
 
+//Promisify some of the mongoose CRUD methods
 var findAmbit = q.nbind(Ambit.findOne, Ambit);
 var findAllAmbits = q.nbind(Ambit.find, Ambit);
 var createAmbit = q.nbind(Ambit.create, Ambit);
+var updateAmbit = q.nbind(Ambit.findByIdAndUpdate);
 
 var createLiveStream = q.nbind(Live.create, Live);
 // var deleteLiveStream = q.nbind(Live.remove, Live);
@@ -30,6 +32,16 @@ module.exports.addAmbit = function (req, res, next) {
     })
     .fail(function (error) {
       next(error);
+    });
+};
+
+module.exports.addComment = function(req, res, next) {
+  var _id = req.params.id,
+      body = req.body;
+
+  updateAmbit(_id, {$push: body}, {new: true})
+    .then(function(savedAmbit) {
+      res.send(savedAmbit);
     });
 };
 
