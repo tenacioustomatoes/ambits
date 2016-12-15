@@ -15,7 +15,7 @@ var peer = new Peer({
 
 export default class LiveStream extends React.Component {
 	static defaultProps = {
-		audio: true, 
+		audio: true,
 		height: 480,
 		width: 640,
 		screenshotFormat: 'image/webp',
@@ -46,10 +46,13 @@ export default class LiveStream extends React.Component {
     super();
     this.state = {
       hasStream: false,
-      src: null, 
+      src: null,
       peerId: null,
-      peers: []
+      peers: [],
+      enterPeerId: ''
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -64,10 +67,22 @@ export default class LiveStream extends React.Component {
     });
   }
 
+  handleChange(event) {
+    console.log('update form value');
+    this.setState({enterPeerId: event.target.value});
+  }
+
   render() {
     return (
-      <div> 
+      <div>
         STREAM
+        <form>
+          <label>
+            PEERID:
+            <input type="text" name="name" value={this.state.enterPeerId} onChange={this.handleChange}/>
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     );
   }
