@@ -10,6 +10,7 @@ import HomeView from './home/home.jsx';
 // import DisplayAmbit from './displayAmbit/displayAmbit.jsx';
 
 import Broadcast from './broadcast/components/broadcast.jsx';
+import LiveStream from './liveStreams/liveStream.jsx';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -30,6 +31,7 @@ render((
       <Route path='/map' component={Map}/>
       <Route path='/display' component={Display}/>
       <Route path='/broadcast' component={Broadcast}/>
+      <Route path='/live' component={LiveStream}/>
     </Route>
   </Router>),
   document.getElementById('app'));
