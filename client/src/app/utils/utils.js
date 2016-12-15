@@ -93,10 +93,11 @@ export const postCheckin = function (ambitId, callback) {
     });
 };
 
-export const submitComment = function (ambitId, callback) {
+export const submitComment = function (ambitId, comment, callback) {
   axios({
-    method:'update',
+    method:'put',
     url:'/ambits/' + ambitId,
+    data: {comment: comment},
     contentType: 'application/json'
     }).then(function(response){
       callback();
@@ -114,6 +115,7 @@ export const postAmbit = function (ambit, callback){
     }).then(function(response){
       callback(response, null);
     }).catch(function(error) {
+      console.error(error);
       callback(null, error);
     });
 };

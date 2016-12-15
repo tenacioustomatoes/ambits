@@ -39,6 +39,7 @@ module.exports.addComment = function(req, res, next) {
   var _id = req.params.id,
       body = req.body;
 
+  console.log('in add comment: ', req);
   updateAmbit(_id, {$push: body}, {new: true})
     .then(function(savedAmbit) {
       res.send(savedAmbit);
