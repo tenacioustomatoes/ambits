@@ -73,7 +73,7 @@ app.post('/ambits/:id', ambitHelper.saveCheckIn);
 // and value {peerId: peerId, username: username}
 // stored in server memory for now
 /////////////////////////////////////////////////////////
-// app.get('/live', liveStreamHelper.retrieveAllLiveStreams);
+app.get('/live', liveStreamHelper.retrieveAllLiveStreams);
 app.post('/live', liveStreamHelper.addLiveStream);
 app.post('/live/delete', liveStreamHelper.removeLiveStream);
 

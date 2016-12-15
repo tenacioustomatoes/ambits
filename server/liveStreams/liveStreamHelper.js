@@ -39,7 +39,7 @@ module.exports.removeLiveStream = function(req, res, next) {
 module.exports.retrieveAllLiveStreams = function(req, res, next) {
   findAllLiveStream({})
   .then(function(streams) {
-    console.log('Streams retrieved');
+    console.log('Streams retrieved, sending back');
     res.send(streams);
   })
   .fail(function(error) {
