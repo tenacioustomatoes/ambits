@@ -12,7 +12,8 @@ export default class AmbitGeneric extends React.Component {
     this.state = {
       expanded: false,
       ambitId: null, 
-      comment: ''
+      comment: '', 
+      messages: []
     }
   }
 
@@ -37,12 +38,14 @@ export default class AmbitGeneric extends React.Component {
   };
 
   handleCommentChange = (event) => {
-    this.setState({comment: event});
+    this.setState({comment: event.target.value});
   };
 
   handleSubmit = () => {
-    console.log(this);
-    Utils.submitComment(this.state.ambitId, this.state.comment);
+    var data = {avatar: 'no avatar', name: this.props.username, text: this.state.comment};
+    Utils.submitComment(this.state.ambitId, data, (res) => {
+      this.setState({messages: res.data.messages});
+    });
   };
 
   render () {
@@ -55,7 +58,7 @@ export default class AmbitGeneric extends React.Component {
           actAsExpander={true}
           showExpandableButton={true}
         />
-        <Messages />
+        <Messages data={this.state.messages}/>
         <TextField hintText="Comment on the ambit"
           multiLine={true}
           onChange={this.handleCommentChange}
