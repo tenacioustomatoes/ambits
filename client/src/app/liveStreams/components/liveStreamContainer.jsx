@@ -87,7 +87,7 @@ class LiveStreamContainer extends React.Component {
     let currentVideo = null;
     let streams = this.state.streams;
     if (this.state.currentVideo) {
-      currentVideo = <div><LiveStream 
+      currentVideo = <div><LiveStream
       peerId={this.state.currentVideo}/>
       </div>;
     }
@@ -97,7 +97,7 @@ class LiveStreamContainer extends React.Component {
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
             {currentVideo}
-            <SearchField 
+            <SearchField
               handleWatchStream={this.handleWatchStream}/>
             <LiveStreamList
               streams={streams}

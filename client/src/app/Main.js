@@ -10,9 +10,11 @@ import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 import Login from './login/login.jsx';
 import * as loginCtrl from './login/loginCtrl';
+import Drawer from 'material-ui/Drawer';
 
 const styles = {
   container: {
@@ -32,16 +34,29 @@ class Main extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      isLoggedIn: !!loginCtrl.getJwt()
+      isLoggedIn: !!loginCtrl.getJwt(),
+      drawerOpen: false
     };
+    this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
+  toggleDrawer(e) {
+    console.log('toggled nav menu!');
+    e.preventDefault();
+    this.setState({drawerOpen: !this.state.drawerOpen});
+  }
 
   handleLogout() {
     loginCtrl.logout();
     this.setState({
       isLoggedIn: false
     });
+  }
+
+  handleClose(e) {
+    e.preventDefault();
+    this.setState({drawerOpen: false});
   }
 
   render() {
@@ -54,12 +69,23 @@ class Main extends Component {
     const LoginModal = !this.state.isLoggedIn ?
       (<Login main={this} />) :
       null;
+
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
+          <Drawer
+            width={250}
+            open={this.state.drawerOpen}
+            docked={false}
+            onRequestChange={(drawerOpen) => this.setState({drawerOpen})}
+            >
+            <MenuItem onTouchTap={this.handleClose}>Menu Item</MenuItem>
+            <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
+          </Drawer>
           <AppBar
             title='Ambet'
             iconElementRight={logOutButton}
+            onLeftIconButtonTouchTap={this.toggleDrawer}
           />
           {LoginModal}
           {this.props.children}
