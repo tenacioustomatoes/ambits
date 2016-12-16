@@ -13,7 +13,7 @@ var peer = new Peer({
     ]}
   });
 
-export default class LiveStream extends React.Component {
+class LiveStream extends React.Component {
 	static defaultProps = {
 		audio: true,
 		height: 480,
@@ -42,12 +42,11 @@ export default class LiveStream extends React.Component {
     className: PropTypes.string
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hasStream: false,
       src: null,
-      peerId: null,
       connections: [],
       enterPeerId: ''
     };
@@ -57,7 +56,7 @@ export default class LiveStream extends React.Component {
     // this.handleCall = this.handleCall.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
   	this.state.peer = new Peer({
       key: '7inh9zl1wy9l766r',
       debug: 3,
@@ -79,6 +78,13 @@ export default class LiveStream extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.state.peer.connect(this.props.peerId, {metadata: {
+      'username': 'Forrest'
+    }});
+    console.log(this.props.peerId);
+  }
+
   handleChange(event) {
     console.log('update form value');
     this.setState({enterPeerId: event.target.value});
@@ -87,9 +93,6 @@ export default class LiveStream extends React.Component {
   handleSubmit(event) {
     // event.preventDefault();
     this.setState({peerId: this.state.enterPeerId});
-    this.state.peer.connect(this.state.peerId, {metadata: {
-      'username': 'Forrest'
-    }});
   }
 
   // handleCall(call) {
@@ -118,3 +121,5 @@ export default class LiveStream extends React.Component {
     );
   }
 }
+
+export default LiveStream;
