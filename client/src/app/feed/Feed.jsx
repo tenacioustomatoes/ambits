@@ -6,11 +6,11 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Snackbar from 'material-ui/Snackbar';
 import AmbitList from '../checkin/components/ambitList.jsx';
 
-export default class Feed extends React.Component { 
+export default class Feed extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: 'Forrest Murray', 
+			username: 'Forrest Murray',
 			ambits: []
 		}
 	}

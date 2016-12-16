@@ -126,13 +126,6 @@ class LiveStreamContainer extends React.Component {
             <LiveStreamList streams={streams}
             handleWatchStream={this.handleWatchStream}/>
 
-            <RaisedButton
-            // onTouchTap={this.handleCreateAmbit}
-            buttonStyle={createStyle}
-            containerElement={<Link to='/broadcast'/>}
-            fullWidth = {true}
-            >Create Ambit</RaisedButton>
-
             <Snackbar
             open={this.state.feedback.open}
             message={this.state.feedback.message}
