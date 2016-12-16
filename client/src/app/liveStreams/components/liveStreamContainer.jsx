@@ -2,7 +2,7 @@ import React from 'react';
 import * as Utils from '../../utils/utils.js';
 import LiveStreamList from './liveStreamList.jsx';
 import LiveStream from './liveStream.jsx';
-import SearchField from './SearchField.jsx';
+import SearchField from './searchField.jsx';
 
 import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
