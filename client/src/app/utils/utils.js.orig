@@ -87,20 +87,27 @@ export const postCheckin = function (ambitId, callback) {
     url:'/ambits/' + ambitId,
     contentType: 'application/json'
     }).then(function(response){
-      t
-     t
-     callback();
+      callback();
     }).catch(function(err){
       throw err;
     });
 };
 
+<<<<<<< HEAD
+export const submitComment = function (ambitId, comment, callback) {
+  axios({
+    method:'put',
+    url:'/ambits/' + ambitId,
+    data: {comment: comment},
+    contentType: 'application/json'
+=======
 export const submitComment = function (ambitId, message, callback) {
   axios({
     method:'put',
     url:'/ambits/' + ambitId,
     contentType: 'application/json',
     data: {message: message}
+>>>>>>> 6a3a57c... add comments on ambits
     }).then(function(response){
       callback(response);
     }).catch(function(err){
@@ -159,8 +166,4 @@ export const checkinAmbit = function(ambit, successCb,errorCb) {
   //device does not support geolocation:
   console.log('your device does not support geolocation :(');
  }
-};
-
-export const getAllStreams = function() {
-  return axios.get('/live');
 };
