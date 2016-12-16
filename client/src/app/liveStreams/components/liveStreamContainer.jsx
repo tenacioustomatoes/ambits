@@ -92,8 +92,8 @@ class LiveStreamContainer extends React.Component {
     let streams = this.state.streams;
     if (this.state.currentVideo) {
       console.log(this.state.currentVideo);
-      currentVideo = <div><LiveStream 
-      peerId={this.state.currentVideo} 
+      currentVideo = <div><LiveStream
+      peerId={this.state.currentVideo}
       autoDetectWindowHeight={false}
       overlayClassName='hidden'
       title='Welcome!'
@@ -107,13 +107,6 @@ class LiveStreamContainer extends React.Component {
             {currentVideo}
             <LiveStreamList streams={streams}
             handleWatchStream={this.handleWatchStream}/>
-
-            <RaisedButton
-            // onTouchTap={this.handleCreateAmbit}
-            buttonStyle={createStyle}
-            containerElement={<Link to='/broadcast'/>}
-            fullWidth = {true}
-            >Create Ambit</RaisedButton>
 
             <Snackbar
             open={this.state.feedback.open}

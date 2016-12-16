@@ -29,10 +29,10 @@ const userFeedback = {
 };
 
 
-export default class CheckinContainer extends React.Component {
+export default class OwnAmbitView extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log('loaded OwnAmbitView');
     this.state = {
       ambits: [],
       loading: false,

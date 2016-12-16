@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 import OwnAmbitView from './components/ownAmbitView/ownAmbitView.jsx';
 import Feed from '../feed/Feed.jsx';
-
+import LiveStreamContainer from './../liveStreams/components/liveStreamContainer.jsx';
 
 const styles = {
   headline: {
@@ -88,28 +88,30 @@ export default class HomeView extends React.Component {
               onChangeIndex={this.handleChange}
               >
               <div>
-                <h2 style={styles.headline}>Tabs with slide effect</h2>
-                Swipe to see the next slide.<br />
+                <LiveStreamContainer />
             </div>
             <div style={styles.slide}>
-              <Feed /> 
+              <Feed />
             </div>
             <div style={styles.slide}>
-              <OwnAmbitView></OwnAmbitView>
+              <OwnAmbitView />
             </div>
           </SwipeableViews>
         </div>
+
         <RaisedButton
         label ={<Link to='/schedule' style={linkStyle} >Create</Link> }
         buttonStyle={actionStyle}
         primary = {true}
         fullWidth={false}
         ></RaisedButton>
+
         <RaisedButton
         buttonStyle={broadcastStyle}
         containerElement={<Link style={linkStyle} to='/broadcast'/>}
         fullWidth = {true}
         >BROADCAST</RaisedButton>
+
         <RaisedButton
         buttonStyle={streamStyle}
         containerElement={<Link style={linkStyle} to='/live'/>}
