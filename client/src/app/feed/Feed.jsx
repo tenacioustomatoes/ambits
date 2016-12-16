@@ -10,7 +10,7 @@ export default class Feed extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: null, 
+			username: 'Forrest Murray', 
 			ambits: []
 		}
 	}
@@ -22,7 +22,7 @@ export default class Feed extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.ambits.map((ambit) => <AmbitGeneric data={ambit}/>)}
+				{this.state.ambits.map((ambit) => <AmbitGeneric username={this.state.username} data={ambit}/>)}
 			</div>
 		);
 	}

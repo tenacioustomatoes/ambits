@@ -6,7 +6,7 @@ var q = require('q');
 var findAmbit = q.nbind(Ambit.findOne, Ambit);
 var findAllAmbits = q.nbind(Ambit.find, Ambit);
 var createAmbit = q.nbind(Ambit.create, Ambit);
-var updateAmbit = q.nbind(Ambit.findByIdAndUpdate);
+var updateAmbit = q.nbind(Ambit.findByIdAndUpdate, Ambit);
 
 // var createLiveStream = q.nbind(Live.create, Live);
 // var deleteLiveStream = q.nbind(Live.remove, Live);
@@ -39,9 +39,10 @@ module.exports.addComment = function(req, res, next) {
   var _id = req.params.id,
       body = req.body;
 
-  console.log('in add comment: ', req);
-  updateAmbit(_id, {$push: body}, {new: true})
+
+  updateAmbit(_id, {$push: {'messages': body.message}}, {new: true})
     .then(function(savedAmbit) {
+      console.log(savedAmbit);
       res.send(savedAmbit);
     });
 };
