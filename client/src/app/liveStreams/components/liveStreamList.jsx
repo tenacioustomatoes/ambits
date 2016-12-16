@@ -11,9 +11,4 @@ const LiveStreamList = (props) => {
   </div>);
 }
 
-// AmbitList.propTypes = {
-//   ambits: React.PropTypes.array.isRequired,
-//   handleCheckinAmbit: React.PropTypes.func.isRequired
-// };
-
 export default LiveStreamList;

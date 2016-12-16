@@ -46,14 +46,6 @@ const userFeedback = {
   checkInternetConnection:'Cannot fetch ambits:( Check internet connection'
 };
 
-const currentVideoStyle = {
-  position: 'absolute',
-  'margin-right': '-50%',
-  'z-index': 10000,
-  top: '50%',
-  left: '20%'
-};
-
 const searchFieldStyle = {
   margin: '10px'
 };
@@ -76,18 +68,6 @@ class LiveStreamContainer extends React.Component {
     this.handleWatchStream = this.handleWatchStream.bind(this);
   }
 
-
-  // getAllStreams() {
-  //   console.log('gonna get streams');
-  //   axios.get('/live')
-  //   .then(streams => {
-  //     this.setState({streams: streams.data, loading: false});
-  //   })
-  //   .catch(err => {
-  //     console.error('Error retrieving streams from DB', err);
-  //   });
-  // };
-
   componentDidMount() {
     Utils.getAllStreams()
     .then(streams => {
@@ -98,13 +78,8 @@ class LiveStreamContainer extends React.Component {
     });
   }
 
-
-
-
-
-
-
   handleWatchStream(peerId) {
+    console.log('peerId is', peerId);
     this.setState({currentVideo: peerId});
   }
 
@@ -113,8 +88,8 @@ class LiveStreamContainer extends React.Component {
     let streams = this.state.streams;
     if (this.state.currentVideo) {
       currentVideo = <div><LiveStream 
-      peerId={this.state.currentVideo} 
-      style={currentVideoStyle}/></div>;
+      peerId={this.state.currentVideo}/>
+      </div>;
     }
 
     if(!this.state.loading) {
@@ -122,10 +97,11 @@ class LiveStreamContainer extends React.Component {
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
             {currentVideo}
-            <SearchField handleWatchStream={this.handleWatchStream}/>
-            <LiveStreamList streams={streams}
-            handleWatchStream={this.handleWatchStream}/>
-
+            <SearchField 
+              handleWatchStream={this.handleWatchStream}/>
+            <LiveStreamList
+              streams={streams}
+              handleWatchStream={this.handleWatchStream}/>
             <Snackbar
             open={this.state.feedback.open}
             message={this.state.feedback.message}
