@@ -2,6 +2,7 @@ import React from 'react';
 import * as Utils from '../../utils/utils.js';
 import LiveStreamList from './liveStreamList.jsx';
 import LiveStream from './liveStream.jsx';
+import SearchField from './SearchField.jsx';
 
 import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -12,6 +13,8 @@ import {Router, Route, Link} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 //import Controls from './controls.jsx';
+
+
 
 
 //styling
@@ -45,9 +48,15 @@ const userFeedback = {
 
 const currentVideoStyle = {
   position: 'absolute',
-  margin: 'auto',
-  'z-index': '69 !important'
-}
+  'margin-right': '-50%',
+  'z-index': 10000,
+  top: '50%',
+  left: '20%'
+};
+
+const searchFieldStyle = {
+  margin: '10px'
+};
 
 
 class LiveStreamContainer extends React.Component {
@@ -68,20 +77,32 @@ class LiveStreamContainer extends React.Component {
   }
 
 
-  getAllStreams() {
-    console.log('gonna get streams');
-    axios.get('/live')
+  // getAllStreams() {
+  //   console.log('gonna get streams');
+  //   axios.get('/live')
+  //   .then(streams => {
+  //     this.setState({streams: streams.data, loading: false});
+  //   })
+  //   .catch(err => {
+  //     console.error('Error retrieving streams from DB', err);
+  //   });
+  // };
+
+  componentDidMount() {
+    Utils.getAllStreams()
     .then(streams => {
       this.setState({streams: streams.data, loading: false});
     })
     .catch(err => {
       console.error('Error retrieving streams from DB', err);
     });
-  };
-
-  componentDidMount() {
-    this.getAllStreams();
   }
+
+
+
+
+
+
 
   handleWatchStream(peerId) {
     this.setState({currentVideo: peerId});
@@ -91,13 +112,9 @@ class LiveStreamContainer extends React.Component {
     let currentVideo = null;
     let streams = this.state.streams;
     if (this.state.currentVideo) {
-      console.log(this.state.currentVideo);
-      currentVideo = <div><LiveStream
-      peerId={this.state.currentVideo}
-      autoDetectWindowHeight={false}
-      overlayClassName='hidden'
-      title='Welcome!'
-      modal={true}/></div>;
+      currentVideo = <div><LiveStream 
+      peerId={this.state.currentVideo} 
+      style={currentVideoStyle}/></div>;
     }
 
     if(!this.state.loading) {
@@ -105,6 +122,7 @@ class LiveStreamContainer extends React.Component {
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
             {currentVideo}
+            <SearchField handleWatchStream={this.handleWatchStream}/>
             <LiveStreamList streams={streams}
             handleWatchStream={this.handleWatchStream}/>
 

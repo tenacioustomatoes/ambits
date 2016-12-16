@@ -160,3 +160,7 @@ export const checkinAmbit = function(ambit, successCb,errorCb) {
   console.log('your device does not support geolocation :(');
  }
 };
+
+export const getAllStreams = function() {
+  return axios.get('/live');
+};

@@ -43,7 +43,6 @@ const createPeerConnection = () => {
   getVideo(stream => {
     window.localStream = stream;
     console.log(window.localStream);
-    // onReceiveStream(stream, 'my-camera');
   });
 
 
@@ -58,14 +57,16 @@ const createPeerConnection = () => {
   }
 
   peer.on('close', () => {
-    axios.post('/liveDelete', {peerId: peerId})
-    .then(response => console.log(response))
+    axios.post('/live/delete', {peerId: peerId})
+    .then(response => console.log('Successfully deleted:', response))
     .catch(err => console.error('Error sending delete request to server', err));
   });
 
   peer.on('connection', (conn) => {
     peer.call(conn.peer, window.localStream);
   });
+
+  // setTimeout(()=>peer.destroy(), 6000);
 
 };
 
