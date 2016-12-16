@@ -13,6 +13,15 @@ var peer = new Peer({
     ]}
   });
 
+const currentVideoStyle = {
+  position: 'absolute',
+  display: 'flex',
+  top: '50%',
+  left: '50%',
+  'margin-right': '-50%',
+  'z-index': '10000'
+};
+
 class LiveStream extends React.Component {
 	static defaultProps = {
 		audio: true,
@@ -107,19 +116,20 @@ class LiveStream extends React.Component {
   render() {
     return (
       <div>
-        STREAM
-        <form>
-          <label>
-            PEERID:
-            <input type="text" name="name" value={this.state.enterPeerId} onChange={this.handleChange}/>
-          </label>
-          <input type="button" value="Submit" onClick={this.handleSubmit}/>
-        </form>
-        <button type="button" onClick={this.handleCall}>CALL</button>
-        <video autoPlay src={this.state.src}></video>
+        <video 
+        autoPlay
+        src={this.state.src}
+        style={currentVideoStyle}></video>
       </div>
     );
   }
-}
+};
 
 export default LiveStream;
+        //   <label>
+        //     PEERID:
+        //     <input type="text" name="name" value={this.state.enterPeerId} onChange={this.handleChange}/>
+        //   </label>
+        //   <input type="button" value="Submit" onClick={this.handleSubmit}/>
+        // </form>
+        // <button type="button" onClick={this.handleCall}>CALL</button>

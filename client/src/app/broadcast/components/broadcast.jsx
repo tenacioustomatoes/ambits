@@ -17,7 +17,12 @@ import CreatePeerConnection from '../../utils/createPeerConnection.js';
 import CommitButton from './commitButton.jsx';
 
 export default class BroadcastContainer extends React.Component {
-
+  constructor(props) {
+    super();
+    this.state = {
+      stream: null
+    };
+  }
   render() {
     return (
       <div>
