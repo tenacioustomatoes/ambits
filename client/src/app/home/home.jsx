@@ -22,8 +22,8 @@ const styles = {
 
 const actionStyle = {
   color: 'white',
-  backgroundColor:'blue',
   position: 'fixed',
+  paddingTop: '7px',
   top: '95%',
   left: '20%',
   height:'50px',
@@ -32,8 +32,8 @@ const actionStyle = {
 };
 const broadcastStyle = {
   color: 'white',
-  backgroundColor:'blue',
   position: 'fixed',
+  paddingTop: '7px',
   top: '95%',
   left: '50%',
   height:'50px',
@@ -42,7 +42,7 @@ const broadcastStyle = {
 };
 const streamStyle = {
   color: 'white',
-  backgroundColor:'blue',
+  paddingTop: '7px',
   position: 'fixed',
   top: '95%',
   left: '80%',
@@ -53,7 +53,8 @@ const streamStyle = {
 
 const linkStyle = {
   color:'white',
-  textDecoration:'none'
+  textDecoration:'none',
+  margin: '0',
 };
 
 export default class HomeView extends React.Component {
@@ -100,23 +101,28 @@ export default class HomeView extends React.Component {
         </div>
 
         <RaisedButton
-        label ={<Link to='/schedule' style={linkStyle} >Create</Link> }
+        label="CREATE"
         buttonStyle={actionStyle}
         primary = {true}
         fullWidth={false}
+        containerElement={<Link to='/schedule' style={linkStyle} />}
         ></RaisedButton>
 
         <RaisedButton
         buttonStyle={broadcastStyle}
         containerElement={<Link style={linkStyle} to='/broadcast'/>}
         fullWidth = {true}
-        >BROADCAST</RaisedButton>
+        primary = {true}
+        label="BROADCAST"
+        ></RaisedButton>
 
         <RaisedButton
         buttonStyle={streamStyle}
         containerElement={<Link style={linkStyle} to='/live'/>}
         fullWidth = {true}
-        >STREAM</RaisedButton>
+        primary = {true}
+        label="STREAM"
+        ></RaisedButton>
       </div>
     );
   }

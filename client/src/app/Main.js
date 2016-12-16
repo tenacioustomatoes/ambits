@@ -15,6 +15,7 @@ import TextField from 'material-ui/TextField';
 import Login from './login/login.jsx';
 import * as loginCtrl from './login/loginCtrl';
 import Drawer from 'material-ui/Drawer';
+import {Link} from 'react-router';
 
 const styles = {
   container: {
@@ -25,8 +26,10 @@ const styles = {
 
 const muiTheme = getMuiTheme({
   palette: {
-    accent1Color: '#ffffff',
-    primary1Color: '#e41017'
+    accent1Color: '#80c9ff',
+    primary1Color: '#e41017',
+    primary2Color: '#e41017',
+    primary3Color: '#e41017',
   },
 });
 
@@ -79,8 +82,9 @@ class Main extends Component {
             docked={false}
             onRequestChange={(drawerOpen) => this.setState({drawerOpen})}
             >
-            <MenuItem onTouchTap={this.handleClose}>Menu Item</MenuItem>
-            <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
+            <MenuItem onTouchTap={this.handleClose}>Home</MenuItem>
+            <MenuItem onTouchTap={this.handleClose}>Profile</MenuItem>
+            <MenuItem onTouchTap={this.handleClose}>Friends</MenuItem>
           </Drawer>
           <AppBar
             title='Ambet'
