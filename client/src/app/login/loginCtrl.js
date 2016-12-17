@@ -11,9 +11,11 @@ export const login = (user) =>
   axios.post('/login', user)
   .then(res => setToken(res));
 
-export const signup = (user) => 
-  axios.post('/register',user)
+export const signup = (user) => {
+  window.UserName = user.username;
+  return axios.post('/register',user)
   .then(res => setToken(res));
+};
 
 export const logout = (user) => 
   window.localStorage.removeItem(tokenKey);
