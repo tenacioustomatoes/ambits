@@ -29,6 +29,7 @@ class Login extends Component {
         loginIsOpen: false
       })
       this.props.main.setState({
+        user: this.state.email,
         isLoggedIn: true
       });
     })
@@ -63,7 +64,7 @@ class Login extends Component {
     })
   };
 
-  handleChange = (name,e) => {
+  handleChange = (name, e) => {
     if (this.state.submitError) {
       this.setState({ submitError: '' });
     }
