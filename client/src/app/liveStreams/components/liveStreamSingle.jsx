@@ -8,21 +8,15 @@ import {Link} from 'react-router';
 
 import LiveStream from './liveStream.jsx';
 
-const notCheckedStyle = {
-  color: 'white', //TODO: not working colors...
-  rippleColor: 'green',
-  backgroundColor:'green',
-};
-
-const checkedStyle = {
-  color: 'white',
-  backgroundColor:'blue',
-};
-
-const statsStyle = {
+const redStyle = {
   color: 'white',
   backgroundColor:'red',
 };
+
+const greenStyle = {
+  color: 'white',
+  backgroundColor: 'green',
+}
 
 const cardStyle = {
   'margin': '10px'
@@ -48,9 +42,13 @@ class LiveStreamSingle extends React.Component {
   }
 
   render () {
-    let videoStream = <div></div> ;
+    let videoStream = <div></div>;
+    let buttonStyle = '';
     if (this.state.watching) {
-      videoStream = <LiveStream peerId={this.state.peerId} />
+      videoStream = <LiveStream peerId={this.state.peerId} />;
+      buttonStyle = redStyle;
+    } else {
+      buttonStyle = greenStyle;
     }
 
     return (
@@ -64,6 +62,7 @@ class LiveStreamSingle extends React.Component {
           <FlatButton
             label={this.state.watching ? 'Stop Watching' : 'Watch Now'}
             onTouchTap={() => this.handleWatchPress() }
+            style={buttonStyle}
           />
         </CardActions>
       </Card>
