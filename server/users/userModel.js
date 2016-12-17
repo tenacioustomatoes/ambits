@@ -16,6 +16,14 @@ var ambitSchema = new mongoose.Schema({
   //repeats (every week? every other week? is this necessary?)
 });
 
+var transactionSchema = new mongoose.Schema({
+  amount: Number,
+  ambit: String, 
+  previousBalance: Number, 
+  currentBalance: Number, 
+  Odds: Number 
+});
+
 var userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -29,7 +37,9 @@ var userSchema = new mongoose.Schema({
   password: String,
   salt: String,
   friend_ids: [String],
-  live: [ambitSchema]
+  live: [ambitSchema], 
+  tokenBalance: Number,
+  transactions: [transactionSchema]
 });
 
 // var FriendsSchema = new mongoose.Schema({

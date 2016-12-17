@@ -41,7 +41,8 @@ class Main extends Component {
     super(props, context);
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
-      drawerOpen: false
+      drawerOpen: false, 
+      user: null
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.handleClose = this.handleClose.bind(this);
