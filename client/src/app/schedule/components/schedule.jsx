@@ -9,7 +9,8 @@ import SelectFrequency from './selectFrequency.jsx';
 import Divider from 'material-ui/Divider';
 import * as Utils from '../../utils/utils.js';
 import {Coords} from '../../map/map.jsx';
-
+import {Link} from 'react-router';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default class ScheduleContainer extends React.Component {
   constructor (props) {
@@ -28,7 +29,7 @@ export default class ScheduleContainer extends React.Component {
       startTime:null,
       checkIns:[]
     };
-    
+
     this.onNameInput = this.onNameInput.bind(this);
     this.onStartDateSet = this.onStartDateSet.bind(this);
     this.onSelectTime = this.onSelectTime.bind(this);
@@ -153,6 +154,14 @@ onSelectDaysInputSaturday(event, checked) {
   render() {
     return (
       <div>
+        <div>
+          <RaisedButton
+            primary={true}
+            label="Add Location"
+            containerElement={<Link to='/map' />}
+          >
+          </RaisedButton>
+        </div>
         <div>
           <AmbitNameInput
             onNameInput={this.onNameInput}
