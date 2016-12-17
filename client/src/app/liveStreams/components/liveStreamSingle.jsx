@@ -45,7 +45,7 @@ class LiveStreamSingle extends React.Component {
     let videoStream = <div></div>;
     let buttonStyle = '';
     if (this.state.watching) {
-      videoStream = <LiveStream peerId={this.state.peerId} />;
+      videoStream = <LiveStream peerId={this.state.peerId} style={cardStyle}/>;
       buttonStyle = redStyle;
     } else {
       buttonStyle = greenStyle;
