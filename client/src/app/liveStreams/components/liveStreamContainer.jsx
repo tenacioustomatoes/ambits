@@ -4,22 +4,12 @@ import LiveStreamList from './liveStreamList.jsx';
 import LiveStream from './liveStream.jsx';
 import SearchField from './searchField.jsx';
 
-import {deepOrange500} from 'material-ui/styles/colors';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircularProgress from 'material-ui/CircularProgress';
 import Snackbar from 'material-ui/Snackbar';
 import {Router, Route, Link} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 //import Controls from './controls.jsx';
-
-const createStyle = {
-  color: 'white',
-  backgroundColor:'orange',
-  'margin-top': '6px'
-};
-
 
 const spinnerStyle  = {
   position: 'fixed',
