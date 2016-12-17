@@ -38,6 +38,10 @@ const linkStyle = {
   margin: '0',
 };
 
+const paddingDiv = {
+  paddingTop: '8.3%'
+}
+
 export default class HomeView extends React.Component {
 
   constructor(props) {
@@ -71,12 +75,15 @@ export default class HomeView extends React.Component {
               >
             <div style={styles.slide}>
               <LiveStreamContainer />
+              <div style={paddingDiv}></div>
             </div>
             <div style={styles.slide}>
               <Feed />
+              <div style={paddingDiv}></div>
             </div>
             <div style={styles.slide}>
               <MyAmbitsContainer />
+              <div style={paddingDiv}></div>
             </div>
           </SwipeableViews>
         </div>
