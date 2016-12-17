@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var liveSchema = new Schema({
-  uId: String,
-  ambitId: String,
+  ambitName: String,
+  ambitRefId: String,
   user: String,
   peerId: String
 });
