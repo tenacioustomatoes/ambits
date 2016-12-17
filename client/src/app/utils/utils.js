@@ -164,3 +164,9 @@ export const checkinAmbit = function(ambit, successCb,errorCb) {
 export const getAllStreams = function() {
   return axios.get('/live');
 };
+
+export const deleteLiveStream = function(ambitRefId) {
+  axios.post('/live/delete', {ambitRefId: ambitRefId})
+  .then(response => console.log('Successfully deleted:', response))
+  .catch(err => console.error('Error sending delete request to server', err));
+};

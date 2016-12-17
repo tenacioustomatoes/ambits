@@ -89,7 +89,7 @@ class LiveStream extends React.Component {
 
   componentDidMount() {
     this.state.peer.connect(this.props.peerId, {metadata: {
-      'username': 'Forrest'
+      'username': 'Logged in user'
     }});
     console.log(this.props.peerId);
   }
