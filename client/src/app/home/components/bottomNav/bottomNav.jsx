@@ -34,7 +34,7 @@ class BottomNav extends Component {
 
   render() {
     return (
-      <Paper zDepth={1} style={style}>
+      <Paper zDepth={5} style={style}>
         <BottomNavigation selectedIndex={this.state.selectedIndex} style={{backgroundColor: '#737373'}}>
           <BottomNavigationItem
             label="Friends"

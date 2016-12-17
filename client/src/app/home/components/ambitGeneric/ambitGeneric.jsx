@@ -6,6 +6,11 @@ import Messages from '../../../feed/Messages.jsx';
 import TextField from 'material-ui/TextField';
 import * as Utils from '../../../utils/utils.js';
 
+
+const cardStyle = {
+  'margin': '10px'
+};
+
 import BetContainer from '../../../makeBet/betContainer.jsx';
 
 export default class AmbitGeneric extends React.Component {
@@ -13,8 +18,8 @@ export default class AmbitGeneric extends React.Component {
     super(props);
     this.state = {
       expanded: false,
-      ambitId: null, 
-      comment: '', 
+      ambitId: null,
+      comment: '',
       messages: [],
       placeBet: false
     }
@@ -66,7 +71,7 @@ export default class AmbitGeneric extends React.Component {
     }
 
     return(
-      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+      <Card expanded={this.state.expanded} style={cardStyle} onExpandChange={this.handleExpandChange}>
         <CardHeader
           title={this.props.data.name}
           subtitle="Subtitle"
@@ -105,6 +110,6 @@ export default class AmbitGeneric extends React.Component {
 
 
 
-      // <div><BetContainer 
+      // <div><BetContainer
       // ambitRefId={this.props.data.refId}
       // placeBet={this.state.placeBet} /></div>
