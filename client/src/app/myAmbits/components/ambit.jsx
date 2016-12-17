@@ -19,7 +19,7 @@ const checkedStyle = {
 
 const statsStyle = {
   color: 'white',
-  backgroundColor:'red',
+  backgroundColor:'#9f0026',
 };
 
 const cardStyle = {

@@ -6,13 +6,17 @@ import Messages from '../../../feed/Messages.jsx';
 import TextField from 'material-ui/TextField';
 import * as Utils from '../../../utils/utils.js';
 
+const cardStyle = {
+  'margin': '10px'
+};
+
 export default class AmbitGeneric extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       expanded: false,
-      ambitId: null, 
-      comment: '', 
+      ambitId: null,
+      comment: '',
       messages: []
     }
   }
@@ -50,7 +54,7 @@ export default class AmbitGeneric extends React.Component {
 
   render () {
     return(
-      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+      <Card expanded={this.state.expanded} style={cardStyle} onExpandChange={this.handleExpandChange}>
         <CardHeader
           title={this.props.data.name}
           subtitle="Subtitle"
