@@ -9,6 +9,7 @@ import LiveStreamContainer from './../liveStreams/components/liveStreamContainer
 import MyAmbitsContainer from './../myAmbits/components/myAmbitsContainer.jsx';
 import BottomNavigationExampleSimple from './components/bottomNav/bottomNav.jsx';
 
+
 const styles = {
   headline: {
     fontSize: 24,

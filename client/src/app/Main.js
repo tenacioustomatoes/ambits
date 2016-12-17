@@ -67,6 +67,10 @@ class Main extends Component {
     this.setState({drawerOpen: false});
   }
 
+  getChildContext() {
+    return {user: this.state.user};
+  }
+
   render() {
     const logOutButton = this.state.isLoggedIn ?
       (<FlatButton label="Logout"
@@ -104,5 +108,9 @@ class Main extends Component {
     );
   }
 }
+
+Main.childContextTypes = {
+  user: React.PropTypes.string
+};
 // onLeftIconButtonTouchTap={this.toggleDrawer}
 export default Main;

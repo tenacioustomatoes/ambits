@@ -17,6 +17,7 @@ export default class ScheduleContainer extends React.Component {
     super(props);
 
     this.state = {
+      owner: this.context.user,
       name: '',
       coords:{
         latitude: Coords.latitude,
@@ -192,3 +193,7 @@ onSelectDaysInputSaturday(event, checked) {
     );
   }
 }
+
+ScheduleContainer.contextTypes = {
+  user: React.PropTypes.string
+};
