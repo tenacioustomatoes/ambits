@@ -4,12 +4,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 
 const actionStyle = {
-  color: 'white',
-  backgroundColor:'purple',
   position: 'fixed',
   top: '80%',
   left: '50%',
   height:'50px',
+  paddingTop: '7px',
   width:'240px',
   transform: 'translate(-50%, -50%)'
 };
@@ -83,10 +82,10 @@ class Map extends Component {
         <RaisedButton
 
         onTouchTap={this.getCoordinates.bind(this)}
-        label ={<Link to='/schedule' style ={linkStyle} >Pin Location </Link> }
+        label="Pin Location"
         buttonStyle={actionStyle}
         primary = {true}
-        // containerElement={<Link to='/schedule'/>}
+        containerElement={<Link to='/schedule'/>}
         fullWidth={false}
         ></RaisedButton>
       </div>
