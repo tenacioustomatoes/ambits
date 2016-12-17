@@ -44,7 +44,7 @@ class LiveStreamSingle extends React.Component {
     return (
       <Card style={cardStyle}>
         <CardHeader
-          title = {this.props.stream.user + ' - ' + this.props.stream.peerId}
+          title = {this.props.stream.user + ' - ' + this.props.stream.ambitName}
           avatar = "http://www.19130fitness.com/wp-content/uploads/2015/07/crossfit-barbell.png"
         />
         <CardActions>
