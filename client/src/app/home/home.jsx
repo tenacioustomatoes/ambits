@@ -4,7 +4,6 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
-import OwnAmbitView from './components/ownAmbitView/ownAmbitView.jsx';
 import Feed from '../feed/Feed.jsx';
 import LiveStreamContainer from './../liveStreams/components/liveStreamContainer.jsx';
 import MyAmbitsContainer from './../myAmbits/components/myAmbitsContainer.jsx';

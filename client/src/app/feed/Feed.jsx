@@ -22,7 +22,7 @@ export default class Feed extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.ambits.map((ambit) => <AmbitGeneric username={this.state.username} data={ambit}/>)}
+				{this.state.ambits.map((ambit, i) => <AmbitGeneric key={i} username={this.state.username} data={ambit}/>)}
 			</div>
 		);
 	}

@@ -29,6 +29,7 @@ const styles = {
 
 var custom_darkBaseTheme = darkBaseTheme;
 custom_darkBaseTheme.palette.primary1Color = '#9f0026';
+custom_darkBaseTheme.palette.primary2Color = '#9f0026';
 custom_darkBaseTheme.palette.accent1Color = '#ffffff';
 custom_darkBaseTheme.palette.textColor = '#ffffff';
 custom_darkBaseTheme.palette.secondaryTextColor = '#ffffff';
@@ -41,7 +42,7 @@ class Main extends Component {
     super(props, context);
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
-      drawerOpen: false, 
+      drawerOpen: false,
       user: null
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);

@@ -10,20 +10,8 @@ import {Router, Route, Link} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
-
 import CreatePeerConnection from '../../utils/createPeerConnection.js';
 import Webcam from 'react-webcam';
-
-
-//import Controls from './controls.jsx';
-
-
-//styling
-const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500,
-  },
-});
 
 const createStyle = {
   color: 'white',
@@ -114,7 +102,7 @@ class MyAmbitsContainer extends React.Component {
   render() {
     let broadcast = null;
     if (this.state.broadcast) {
-      broadcast = <div><Webcam 
+      broadcast = <div><Webcam
       style={currentVideoStyle}/>
       <FlatButton
         label='End Stream'
@@ -129,19 +117,17 @@ class MyAmbitsContainer extends React.Component {
 
     if(!this.state.loading) {
       return (
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <div>
-            {broadcast}
-            <AmbitList ambits={this.state.ambits}
-            handleCreatePeerConnection={this.handleCreatePeerConnection}/>
+        <div>
+          {broadcast}
+          <AmbitList ambits={this.state.ambits}
+          handleCreatePeerConnection={this.handleCreatePeerConnection}/>
 
-            <Snackbar
-            open={this.state.feedback.open}
-            message={this.state.feedback.message}
-            autoHideDuration={this.state.feedback.autoHideDuration}
-            />
-          </div>
-        </MuiThemeProvider>
+          <Snackbar
+          open={this.state.feedback.open}
+          message={this.state.feedback.message}
+          autoHideDuration={this.state.feedback.autoHideDuration}
+          />
+        </div>
       );
     } else {
       return (
