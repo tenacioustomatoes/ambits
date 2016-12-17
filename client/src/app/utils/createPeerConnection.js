@@ -17,9 +17,6 @@ const createPeerConnection = (ambitName, ambitRefId) => {
 
   var peerId, conn;
    
-  // console.log('Peer ID is', peerId['id']);
-
-
   peer.on('open', (id) => {
     peerId = id;
     console.log('Peer ID is', peerId);
@@ -27,7 +24,7 @@ const createPeerConnection = (ambitName, ambitRefId) => {
     conn = peer.connect(peerId, {metadata: {
       'username': 'Emerson' //username
     }});
-    axios.post('/live', {peerId: peerId, ambitName: ambitName, user: 'Emerson', ambitRefId: ambitRefId})
+    axios.post('/live', {peerId: peerId, ambitName: ambitName, user: window.UserName, ambitRefId: ambitRefId})
     .then(response => console.log(response))
     .catch(err => console.error('Error posting peer ID to server', err));
   });
@@ -44,8 +41,6 @@ const createPeerConnection = (ambitName, ambitRefId) => {
     window.localStream = stream;
     console.log(window.localStream);
   });
-
-
 
   peer.on('call', call => {
     console.log('getting called');
