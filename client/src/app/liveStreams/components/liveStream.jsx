@@ -13,14 +13,14 @@ var peer = new Peer({
     ]}
   });
 
-const currentVideoStyle = {
-  position: 'absolute',
-  display: 'flex',
-  top: '50%',
-  left: '50%',
-  'margin-right': '-50%',
-  'z-index': '10000'
-};
+// const currentVideoStyle = {
+//   position: 'absolute',
+//   display: 'flex',
+//   top: '50%',
+//   left: '50%',
+//   'margin-right': '-50%',
+//   'z-index': '10000'
+// };
 
 class LiveStream extends React.Component {
 	static defaultProps = {
@@ -79,7 +79,6 @@ class LiveStream extends React.Component {
     this.state.peer.on('call', (call) => {
       call.answer();
       console.log('got a call', call);
-      // this.handleCall(call)
       call.on('stream', (stream) => {
         console.log('getting a stream', stream);
         this.setState({src: window.URL.createObjectURL(stream)});
@@ -118,8 +117,8 @@ class LiveStream extends React.Component {
       <div>
         <video 
         autoPlay
-        src={this.state.src}
-        style={currentVideoStyle}></video>
+        src={this.state.src}>
+        </video>
       </div>
     );
   }
