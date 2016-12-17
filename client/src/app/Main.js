@@ -10,6 +10,7 @@ import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 import Login from './login/login.jsx';
@@ -24,14 +25,16 @@ const styles = {
   },
 };
 
-const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: '#80c9ff',
-    primary1Color: '#e41017',
-    primary2Color: '#e41017',
-    primary3Color: '#e41017',
-  },
-});
+
+var custom_darkBaseTheme = darkBaseTheme;
+custom_darkBaseTheme.palette.primary1Color = '#ad0c29';
+custom_darkBaseTheme.palette.accent1Color = '#ffffff';
+custom_darkBaseTheme.palette.textColor = '#ffffff';
+custom_darkBaseTheme.palette.secondaryTextColor = '#ffffff';
+custom_darkBaseTheme.palette.alternateTextColor = '#ffffff';
+var muiTheme = getMuiTheme(custom_darkBaseTheme);
+
+
 
 class Main extends Component {
   constructor(props, context) {
