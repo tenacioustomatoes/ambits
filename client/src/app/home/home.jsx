@@ -7,7 +7,7 @@ import {Link} from 'react-router';
 import Feed from '../feed/Feed.jsx';
 import LiveStreamContainer from './../liveStreams/components/liveStreamContainer.jsx';
 import MyAmbitsContainer from './../myAmbits/components/myAmbitsContainer.jsx';
-import BottomNavigationExampleSimple from './components/bottomNav/bottomNav.jsx';
+
 
 const styles = {
   headline: {
@@ -81,15 +81,6 @@ export default class HomeView extends React.Component {
           </SwipeableViews>
         </div>
 
-        <RaisedButton
-        label="CREATE"
-        buttonStyle={actionStyle}
-        primary = {true}
-        fullWidth={false}
-        containerElement={<Link to='/schedule' style={linkStyle} />}
-        ></RaisedButton>
-
-      <BottomNavigationExampleSimple />
       </div>
     );
   }
