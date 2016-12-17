@@ -36,12 +36,12 @@ var muiTheme = getMuiTheme(custom_darkBaseTheme);
 
 
 class Main extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
       drawerOpen: false,
-      user: null
+      user: ''
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -63,6 +63,10 @@ class Main extends Component {
   handleClose(e) {
     e.preventDefault();
     this.setState({drawerOpen: false});
+  }
+
+  getChildContext() {
+    return {user: this.state.user};
   }
 
   render() {
@@ -103,5 +107,9 @@ class Main extends Component {
     );
   }
 }
+
+Main.childContextTypes = {
+  user: React.PropTypes.string
+};
 // onLeftIconButtonTouchTap={this.toggleDrawer}
 export default Main;

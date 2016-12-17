@@ -15,6 +15,7 @@ var betSchema = new Schema({
 
 var ambitSchema = new Schema({
   refId: {type: Number, index: true}, //a number used to keep track of the ambit
+  owner: String, 
   name: String,
   coords: {
     latitude: Number,
