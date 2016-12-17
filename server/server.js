@@ -78,6 +78,8 @@ app.get('/live', liveStreamHelper.retrieveAllLiveStreams);
 app.post('/live', liveStreamHelper.addLiveStream);
 app.post('/live/delete', liveStreamHelper.removeLiveStream);
 
+app.put('/placeBet', ambitHelper.placeBet);
+
 app.post('/register', ctrlAuth.register);
 app.post('/login', ctrlAuth.login);
 
