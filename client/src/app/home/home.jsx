@@ -8,6 +8,7 @@ import OwnAmbitView from './components/ownAmbitView/ownAmbitView.jsx';
 import Feed from '../feed/Feed.jsx';
 import LiveStreamContainer from './../liveStreams/components/liveStreamContainer.jsx';
 import MyAmbitsContainer from './../myAmbits/components/myAmbitsContainer.jsx';
+import BottomNavigationExampleSimple from './components/bottomNav/bottomNav.jsx';
 
 const styles = {
   headline: {
@@ -124,6 +125,7 @@ export default class HomeView extends React.Component {
         primary = {true}
         label="STREAM"
         ></RaisedButton>
+      <BottomNavigationExampleSimple />
       </div>
     );
   }

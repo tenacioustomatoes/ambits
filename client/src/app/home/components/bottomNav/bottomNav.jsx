@@ -22,8 +22,8 @@ class BottomNavigationExampleSimple extends Component {
 
   render() {
     return (
-      <Paper zDepth={1}>
-        <BottomNavigation selectedIndex={this.state.selectedIndex}>
+      <Paper zDepth={1} >
+        <BottomNavigation selectedIndex={this.state.selectedIndex} style={{position: 'fixed'}}>
           <BottomNavigationItem
             label="Recents"
             icon={recentsIcon}

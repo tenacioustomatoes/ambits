@@ -17,6 +17,8 @@ import Login from './login/login.jsx';
 import * as loginCtrl from './login/loginCtrl';
 import Drawer from 'material-ui/Drawer';
 import {Link} from 'react-router';
+import CustomHomeIcon from './home/icons/homeIcon.jsx';
+import IconButton from 'material-ui/IconButton';
 
 const styles = {
   container: {
@@ -25,7 +27,6 @@ const styles = {
   },
 };
 
-
 var custom_darkBaseTheme = darkBaseTheme;
 custom_darkBaseTheme.palette.primary1Color = '#9f0026';
 custom_darkBaseTheme.palette.accent1Color = '#ffffff';
@@ -33,7 +34,6 @@ custom_darkBaseTheme.palette.textColor = '#ffffff';
 custom_darkBaseTheme.palette.secondaryTextColor = '#ffffff';
 custom_darkBaseTheme.palette.alternateTextColor = '#ffffff';
 var muiTheme = getMuiTheme(custom_darkBaseTheme);
-
 
 
 class Main extends Component {
@@ -92,7 +92,8 @@ class Main extends Component {
           <AppBar
             title='Ambet'
             iconElementRight={logOutButton}
-            onLeftIconButtonTouchTap={this.toggleDrawer}
+            iconElementLeft={<IconButton containerElement={<Link to='/'/>}><CustomHomeIcon /></IconButton>}
+
           />
           {LoginModal}
           {this.props.children}
@@ -101,5 +102,5 @@ class Main extends Component {
     );
   }
 }
-
+// onLeftIconButtonTouchTap={this.toggleDrawer}
 export default Main;
