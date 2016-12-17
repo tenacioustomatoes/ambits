@@ -52,6 +52,15 @@ const statsStyle = {
   backgroundColor:'red',
 };
 
+const currentVideoStyle = {
+  position: 'absolute',
+  display: 'flex',
+  top: '50%',
+  left: '50%',
+  'margin-right': '-50%',
+  'z-index': '10000'
+};
+
 
 class MyAmbitsContainer extends React.Component {
   constructor(props) {
@@ -105,7 +114,8 @@ class MyAmbitsContainer extends React.Component {
   render() {
     let broadcast = null;
     if (this.state.broadcast) {
-      broadcast = <div><Webcam />
+      broadcast = <div><Webcam 
+      style={currentVideoStyle}/>
       <FlatButton
         label='End Stream'
         onTouchTap={() => {
