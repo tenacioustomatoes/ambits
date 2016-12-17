@@ -17,14 +17,14 @@ class SearchField extends React.Component {
           floatingLabelText="Enter a PeerID"
           style={searchFieldStyle}/>
 
-        <RaisedButton 
+        <RaisedButton
           label="I'm feeling lucky"
           primary={true}
           onTouchTap={()=>{
             this.props.handleWatchStream(this.refs.searchField.getValue());
             }
           }
-        />
+        ></RaisedButton>
       </div>
     );
   }

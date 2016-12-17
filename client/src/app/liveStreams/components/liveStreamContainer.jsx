@@ -14,16 +14,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 //import Controls from './controls.jsx';
 
-
-
-
-//styling
-const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500,
-  },
-});
-
 const createStyle = {
   color: 'white',
   backgroundColor:'orange',
@@ -94,21 +84,20 @@ class LiveStreamContainer extends React.Component {
 
     if(!this.state.loading) {
       return (
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <div>
-            {currentVideo}
-            <SearchField
-              handleWatchStream={this.handleWatchStream}/>
-            <LiveStreamList
-              streams={streams}
-              handleWatchStream={this.handleWatchStream}/>
-            <Snackbar
-            open={this.state.feedback.open}
-            message={this.state.feedback.message}
-            autoHideDuration={this.state.feedback.autoHideDuration}
-            />
-          </div>
-        </MuiThemeProvider>
+        <div>
+          {currentVideo}
+          <SearchField
+            primary={true}
+            handleWatchStream={this.handleWatchStream}/>
+          <LiveStreamList
+            streams={streams}
+            handleWatchStream={this.handleWatchStream}/>
+          <Snackbar
+          open={this.state.feedback.open}
+          message={this.state.feedback.message}
+          autoHideDuration={this.state.feedback.autoHideDuration}
+          />
+        </div>
       );
     } else {
       return (
