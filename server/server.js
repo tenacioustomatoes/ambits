@@ -26,24 +26,24 @@ var ctrlAuth = require('./controllers/authentication');
 require('./config/passport');
 
 
-if (process.env.NODE_ENV !== 'production') {
-  const webpack = require('webpack');
-  const webpackDevMiddleware = require('webpack-dev-middleware');
-  // const webpackHotMiddleware = require('webpack-hot-middleware');
-  const config = require('../webpack-dev-server.config.js');
-  const compiler = webpack(config);
+// if (process.env.NODE_ENV !== 'production') {
+//   const webpack = require('webpack');
+//   const webpackDevMiddleware = require('webpack-dev-middleware');
+//   // const webpackHotMiddleware = require('webpack-hot-middleware');
+//   const config = require('../webpack-dev-server.config.js');
+//   const compiler = webpack(config);
 
-  // console.log(config.output.publicPath, config.output.path);
-  app.use(webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-    stats: { colors: true }
-  }));
+//   // console.log(config.output.publicPath, config.output.path);
+//   app.use(webpackDevMiddleware(compiler, {
+//     publicPath: config.output.publicPath,
+//     stats: { colors: true }
+//   }));
 
-  // app.use(webpackHotMiddleware(compiler, {
-  //   log: console.log
-  // }));
+//   // app.use(webpackHotMiddleware(compiler, {
+//   //   log: console.log
+//   // }));
 
-}
+// }
 
 
 app.use(bodyParser.json());
@@ -65,7 +65,7 @@ app.set('view engine', 'html');
 // Also, probably, to be rehandled in an external routehandler/ctrlrs
 app.get('/ambits', ambitHelper.getAmbits);
 app.post('/ambits', ambitHelper.addAmbit);
-
+app.get('/ambits:id', ambitHelper.getUserAmbits);
 app.post('/ambits/:id', ambitHelper.saveCheckIn);
 app.put('/ambits/:id', ambitHelper.addComment);
 

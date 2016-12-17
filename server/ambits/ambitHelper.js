@@ -4,6 +4,7 @@ var q = require('q');
 
 //Promisify some of the mongoose CRUD methods
 var findAmbit = q.nbind(Ambit.findOne, Ambit);
+var findUserAmbits = q.nbind(Ambit.find, Ambit);
 var findAllAmbits = q.nbind(Ambit.find, Ambit);
 var createAmbit = q.nbind(Ambit.create, Ambit);
 var updateAmbit = q.nbind(Ambit.findByIdAndUpdate, Ambit);
@@ -82,6 +83,18 @@ module.exports.getAmbits = function(req, res, next) {
     });
 };
 
+module.exports.getUserAmbits = function(req, res, next) {
+  //send an array containing all the ambits back to the user.
+  var user = req.params.id;
+
+  findUserAmbits({user: user})
+    .then(function(ambits){
+      res.send(ambits);
+    })
+    .fail(function (error) {
+      next(error);
+    });
+};
 // module.exports.addLiveStream = function(req, res, next) {
 //   var peerId = req.body.peerId;
 //   var user = req.body.user;
