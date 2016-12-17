@@ -8,7 +8,7 @@ var findUserAmbits = q.nbind(Ambit.find, Ambit);
 var findAllAmbits = q.nbind(Ambit.find, Ambit);
 var createAmbit = q.nbind(Ambit.create, Ambit);
 var updateAmbit = q.nbind(Ambit.findByIdAndUpdate, Ambit);
-
+var updateBetAmbit = q.nbind(Ambit.findOneAndUpdate, Ambit);
 // var createLiveStream = q.nbind(Live.create, Live);
 // var deleteLiveStream = q.nbind(Live.remove, Live);
 
@@ -83,6 +83,7 @@ module.exports.getAmbits = function(req, res, next) {
     });
 };
 
+
 module.exports.getUserAmbits = function(req, res, next) {
   //send an array containing all the ambits back to the user.
   var user = req.params.id;
@@ -112,16 +113,17 @@ module.exports.getUserAmbits = function(req, res, next) {
 //     console.error('Error saving live stream to DB', error);
 //   });
 // };
+module.exports.placeBet = function(req, res, next) {
+  var bet = req.body.bet;
+  console.log('body is', req.body);
+  var refId = req.body.ambitRefId;
 
-// // module.exports.removeLiveStream = function(req, res, next) {
-// //   var peerId = req.body.peerId;
-// //   console.log(peerId);
-// //   deleteLiveStream({peerId: peerId})
-// //   .then(function(deletedLive) {
-// //     console.log('Stream deleted:', peerId);
-// //     res.send(deletedLive);
-// //   })
-// //   .fail(function(error) {
-// //     console.error('Error deleting live stream from DB', error);
-// //   });
-// // };
+  updateBetAmbit({'refId': refId}, {$push: {'bets': bet}}, {new: true})
+    .then(function(savedAmbit) {
+      console.log(savedAmbit);
+      res.send(savedAmbit);
+    })
+    .catch(function(error) {
+      console.error('Error saving bet', error);
+    });
+};

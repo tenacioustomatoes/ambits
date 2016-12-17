@@ -13,13 +13,12 @@ class BetContainer extends Component {
       username: window.UserName,
       ambitRefId: this.props.ambitRefId,
       betIsOpen: true
-
-
     };
   }
 
   submitBet(betAmount) {
-    axios.post('/placeBet', {ambitRefId: this.state.ambitRefId, betAmount: betAmount})
+    axios.put('/placeBet', {ambitRefId: this.state.ambitRefId, 
+      bet: {username: this.state.username, betAmount: betAmount}})
     .then(response => {
       alert('Placed bet successfully!');
       this.setState({betIsOpen: !this.state.betIsOpen});
@@ -34,7 +33,7 @@ class BetContainer extends Component {
       <RaisedButton
         label='Place Bet'
         primary={true}
-        onTouchTap={() => submitBet(this.refs.betField.getValue())} />
+        onTouchTap={() => this.submitBet(this.refs.betField.getValue())} />
     ];
 
     return (
