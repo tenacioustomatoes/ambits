@@ -36,12 +36,12 @@ var muiTheme = getMuiTheme(custom_darkBaseTheme);
 
 
 class Main extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
       drawerOpen: false,
-      user: null
+      user: ''
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.handleClose = this.handleClose.bind(this);
