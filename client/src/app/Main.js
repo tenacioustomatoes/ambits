@@ -16,8 +16,6 @@ import Login from './login/login.jsx';
 import * as loginCtrl from './login/loginCtrl';
 import Drawer from 'material-ui/Drawer';
 import {Link} from 'react-router';
-import CustomHomeIcon from './home/icons/homeIcon.jsx';
-import IconButton from 'material-ui/IconButton';
 import BottomNav from './home/components/bottomNav/bottomNav.jsx';
 
 const styles = {
@@ -72,6 +70,7 @@ class Main extends Component {
   }
 
   render() {
+    window.Username = this.state.user;
     const logOutButton = this.state.isLoggedIn ?
       (<FlatButton label="Logout"
         onTouchTap={this.handleLogout.bind(this)}
@@ -98,8 +97,7 @@ class Main extends Component {
           <AppBar
             title='Ambet'
             iconElementRight={logOutButton}
-            iconElementLeft={<IconButton containerElement={<Link to='/'/>}><CustomHomeIcon /></IconButton>}
-
+            showMenuIconButton={false}
           />
           {LoginModal}
           {this.props.children}

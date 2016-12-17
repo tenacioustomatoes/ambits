@@ -6,15 +6,24 @@ import Messages from '../../../feed/Messages.jsx';
 import TextField from 'material-ui/TextField';
 import * as Utils from '../../../utils/utils.js';
 
+
+const cardStyle = {
+  'margin': '10px'
+};
+
+import BetContainer from '../../../makeBet/betContainer.jsx';
+
 export default class AmbitGeneric extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       expanded: false,
-      ambitId: null, 
-      comment: '', 
-      messages: []
+      ambitId: null,
+      comment: '',
+      messages: [],
+      placeBet: false
     }
+    this.handlePlaceBet = this.handlePlaceBet.bind(this);
   }
 
   componentDidMount() {
@@ -48,9 +57,21 @@ export default class AmbitGeneric extends React.Component {
     });
   };
 
+  handlePlaceBet() {
+    this.setState({placeBet: !this.state.placeBet});
+    console.log(this.state.placeBet);
+  };
+
   render () {
+    let betContainer = null;
+    if (this.state.placeBet) {
+      betContainer = <BetContainer
+      ambitRefId={this.props.data.refId}
+      placeBet={this.state.placeBet} />
+    }
+
     return(
-      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+      <Card expanded={this.state.expanded} style={cardStyle} onExpandChange={this.handleExpandChange}>
         <CardHeader
           title={this.props.data.name}
           subtitle="Subtitle"
@@ -78,10 +99,17 @@ export default class AmbitGeneric extends React.Component {
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
         </CardText>
         <CardActions>
-          <FlatButton label="BET" />
+          <FlatButton label="BET" onTouchTap={this.handlePlaceBet} />
         </CardActions>
+      {betContainer}
       </Card>
     );
   }
 
 }
+
+
+
+      // <div><BetContainer
+      // ambitRefId={this.props.data.refId}
+      // placeBet={this.state.placeBet} /></div>
