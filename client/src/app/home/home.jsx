@@ -7,6 +7,7 @@ import {Link} from 'react-router';
 import OwnAmbitView from './components/ownAmbitView/ownAmbitView.jsx';
 import Feed from '../feed/Feed.jsx';
 import LiveStreamContainer from './../liveStreams/components/liveStreamContainer.jsx';
+import MyAmbitsContainer from './../myAmbits/components/myAmbitsContainer.jsx';
 
 const styles = {
   headline: {
@@ -88,14 +89,14 @@ export default class HomeView extends React.Component {
               index={this.state.slideIndex}
               onChangeIndex={this.handleChange}
               >
-              <div>
-                <LiveStreamContainer />
+            <div style={styles.slide}>
+              <LiveStreamContainer />
             </div>
             <div style={styles.slide}>
               <Feed />
             </div>
             <div style={styles.slide}>
-              <OwnAmbitView />
+              <MyAmbitsContainer />
             </div>
           </SwipeableViews>
         </div>

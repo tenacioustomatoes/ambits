@@ -8,10 +8,12 @@ var findAllLiveStream = q.nbind(Live.find, Live);
 module.exports.addLiveStream = function(req, res, next) {
   var peerId = req.body.peerId;
   var user = req.body.user;
-  var ambitId = req.body.ambitId;
+  var ambitName = req.body.ambitName;
+  var ambitRefId = req.body.ambitRefId;
   createLiveStream({
     user: user,
-    ambitId: ambitId,
+    ambitName: ambitName,
+    ambitRefId: ambitRefId,
     peerId: peerId
   })
   .then(function(addedLive) {
@@ -24,10 +26,10 @@ module.exports.addLiveStream = function(req, res, next) {
 };
 
 module.exports.removeLiveStream = function(req, res, next) {
-  var peerId = req.body.peerId;
-  findOneLiveStream({peerId: peerId})
+  var ambitRefId = req.body.ambitRefId;
+  findOneLiveStream({ambitRefId: ambitRefId})
   .then(function(deletedLive) {
-    console.log('Stream deleted:', peerId);
+    console.log('Stream deleted:', ambitRefId);
     deletedLive.remove();
     res.send(deletedLive);
   })

@@ -2,7 +2,7 @@ import axios from 'axios';
 import Peer from 'peerjs';
 
 
-const createPeerConnection = () => {
+const createPeerConnection = (ambitName, ambitRefId) => {
 //Need to pass in amibitId and username/uId to function to pass to get 
 
   var peer = new Peer({
@@ -16,7 +16,7 @@ const createPeerConnection = () => {
   });
 
   var peerId, conn;
-  var ambitName = 'TEST'; 
+   
   // console.log('Peer ID is', peerId['id']);
 
 
@@ -27,7 +27,7 @@ const createPeerConnection = () => {
     conn = peer.connect(peerId, {metadata: {
       'username': 'Emerson' //username
     }});
-    axios.post('/live', {peerId: peerId, ambitId: 'em', user: 'Emerson'})
+    axios.post('/live', {peerId: peerId, ambitName: ambitName, user: 'Emerson', ambitRefId: ambitRefId})
     .then(response => console.log(response))
     .catch(err => console.error('Error posting peer ID to server', err));
   });
@@ -56,11 +56,11 @@ const createPeerConnection = () => {
     call.answer(window.localStream);
   }
 
-  peer.on('close', () => {
-    axios.post('/live/delete', {peerId: peerId})
-    .then(response => console.log('Successfully deleted:', response))
-    .catch(err => console.error('Error sending delete request to server', err));
-  });
+  // peer.on('close', () => {
+  //   axios.post('/live/delete', {peerId: peerId})
+  //   .then(response => console.log('Successfully deleted:', response))
+  //   .catch(err => console.error('Error sending delete request to server', err));
+  // });
 
   peer.on('connection', (conn) => {
     peer.call(conn.peer, window.localStream);
