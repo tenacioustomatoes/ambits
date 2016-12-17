@@ -25,17 +25,17 @@ class BottomNavigationExampleSimple extends Component {
       <Paper zDepth={1} >
         <BottomNavigation selectedIndex={this.state.selectedIndex} style={{position: 'fixed'}}>
           <BottomNavigationItem
-            label="Recents"
+            label="Friends"
             icon={recentsIcon}
             onTouchTap={() => this.select(0)}
           />
           <BottomNavigationItem
-            label="Favorites"
+            label="Create"
             icon={favoritesIcon}
             onTouchTap={() => this.select(1)}
           />
           <BottomNavigationItem
-            label="Nearby"
+            label="Ledger"
             icon={nearbyIcon}
             onTouchTap={() => this.select(2)}
           />

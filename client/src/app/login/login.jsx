@@ -81,8 +81,8 @@ class Login extends Component {
 
   render() {
     const signUp = this.state.isSigningUp;
-    const signUpField = signUp ? 
-      (<TextField 
+    const signUpField = signUp ?
+      (<TextField
         onChange={this.handleChange.bind(this,'username')}
         fullWidth={true}
         hintText='username' />) :
@@ -92,15 +92,17 @@ class Login extends Component {
       <RaisedButton
         label='Login'
         primary={!this.state.isSigningUp}
-        onTouchTap={(!signUp) ? 
-          this.handleLogin : 
+        secondary={this.state.isSigningUp}
+        onTouchTap={(!signUp) ?
+          this.handleLogin :
           this.toggleSignUp.bind(this)
         }
       />,
       <RaisedButton
         label='Signup'
         primary={this.state.isSigningUp}
-        onTouchTap={(signUp) ? 
+        secondary={!this.state.isSigningUp}
+        onTouchTap={(signUp) ?
           this.handleSignUp :
           this.toggleSignUp.bind(this)
         }
@@ -116,7 +118,7 @@ class Login extends Component {
             actions={standardActions}
             modal={true}
           >
-            <TextField 
+            <TextField
               onChange={this.handleChange.bind(this,'email')}
               fullWidth={true}
               hintText='email' />

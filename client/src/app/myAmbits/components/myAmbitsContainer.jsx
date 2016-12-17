@@ -1,9 +1,6 @@
 import React from 'react';
 import * as Utils from '../../utils/utils.js';
 import AmbitList from './ambitList.jsx';
-import {deepOrange500} from 'material-ui/styles/colors';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircularProgress from 'material-ui/CircularProgress';
 import Snackbar from 'material-ui/Snackbar';
 import {Router, Route, Link} from 'react-router';
@@ -12,13 +9,6 @@ import FlatButton from 'material-ui/FlatButton';
 
 import CreatePeerConnection from '../../utils/createPeerConnection.js';
 import Webcam from 'react-webcam';
-
-const createStyle = {
-  color: 'white',
-  backgroundColor:'orange',
-  'margin-top': '6px'
-};
-
 
 const spinnerStyle  = {
   position: 'fixed',
