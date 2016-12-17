@@ -8,6 +8,7 @@ import OwnAmbitView from './components/ownAmbitView/ownAmbitView.jsx';
 import Feed from '../feed/Feed.jsx';
 import LiveStreamContainer from './../liveStreams/components/liveStreamContainer.jsx';
 import MyAmbitsContainer from './../myAmbits/components/myAmbitsContainer.jsx';
+import BottomNavigationExampleSimple from './components/bottomNav/bottomNav.jsx';
 
 const styles = {
   headline: {
@@ -26,27 +27,7 @@ const actionStyle = {
   position: 'fixed',
   paddingTop: '7px',
   top: '95%',
-  left: '20%',
-  height:'50px',
-  width:'240px',
-  transform: 'translate(-50%, -50%)'
-};
-const broadcastStyle = {
-  color: 'white',
-  position: 'fixed',
-  paddingTop: '7px',
-  top: '95%',
   left: '50%',
-  height:'50px',
-  width:'240px',
-  transform: 'translate(-50%, -50%)'
-};
-const streamStyle = {
-  color: 'white',
-  paddingTop: '7px',
-  position: 'fixed',
-  top: '95%',
-  left: '80%',
   height:'50px',
   width:'240px',
   transform: 'translate(-50%, -50%)'
@@ -109,21 +90,7 @@ export default class HomeView extends React.Component {
         containerElement={<Link to='/schedule' style={linkStyle} />}
         ></RaisedButton>
 
-        <RaisedButton
-        buttonStyle={broadcastStyle}
-        containerElement={<Link style={linkStyle} to='/broadcast'/>}
-        fullWidth = {true}
-        primary = {true}
-        label="BROADCAST"
-        ></RaisedButton>
-
-        <RaisedButton
-        buttonStyle={streamStyle}
-        containerElement={<Link style={linkStyle} to='/live'/>}
-        fullWidth = {true}
-        primary = {true}
-        label="STREAM"
-        ></RaisedButton>
+      <BottomNavigationExampleSimple />
       </div>
     );
   }
