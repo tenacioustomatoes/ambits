@@ -8,21 +8,15 @@ import {Link} from 'react-router';
 
 import LiveStream from './liveStream.jsx';
 
-const notCheckedStyle = {
-  color: 'white', //TODO: not working colors...
-  rippleColor: 'green',
-  backgroundColor:'green',
-};
-
-const checkedStyle = {
-  color: 'white',
-  backgroundColor:'blue',
-};
-
-const statsStyle = {
+const redStyle = {
   color: 'white',
   backgroundColor:'red',
 };
+
+const greenStyle = {
+  color: 'white',
+  backgroundColor: 'green',
+}
 
 const cardStyle = {
   'margin': '10px'
@@ -37,23 +31,38 @@ class LiveStreamSingle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      peerId: this.props.stream.peerId,
+      watching: false
     };
   }
 
+  handleWatchPress () {
+    this.setState({watching: !this.state.watching});
+
+  }
+
   render () {
+    let videoStream = <div></div>;
+    let buttonStyle = '';
+    if (this.state.watching) {
+      videoStream = <LiveStream peerId={this.state.peerId} style={cardStyle}/>;
+      buttonStyle = redStyle;
+    } else {
+      buttonStyle = greenStyle;
+    }
+
     return (
       <Card style={cardStyle}>
         <CardHeader
-          title = {this.props.stream.user + ' - ' + this.props.stream.peerId}
+          title = {this.props.stream.user + ' - ' + this.props.stream.ambitName}
           avatar = "http://www.19130fitness.com/wp-content/uploads/2015/07/crossfit-barbell.png"
         />
+        {videoStream}
         <CardActions>
           <FlatButton
-            label='Watch Now'
-            onTouchTap={() => {
-              this.props.handleWatchStream(this.props.stream.peerId);
-              }
-            }
+            label={this.state.watching ? 'Stop Watching' : 'Watch Now'}
+            onTouchTap={() => this.handleWatchPress() }
+            style={buttonStyle}
           />
         </CardActions>
       </Card>

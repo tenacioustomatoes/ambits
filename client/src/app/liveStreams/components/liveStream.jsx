@@ -3,23 +3,8 @@ import { findDOMNode } from 'react-dom';
 
 import Peer from 'peerjs';
 
-var peer = new Peer({
-    key: '7inh9zl1wy9l766r',
-    debug: 3,
-    config: {'iceServers': [
-    { url: 'stun:stun1.l.google.com:19302' },
-    { url: 'turn:numb.viagenie.ca',
-      credential: 'muazkh', username: 'webrtc@live.com' }
-    ]}
-  });
-
 const currentVideoStyle = {
-  position: 'absolute',
-  display: 'flex',
-  top: '50%',
-  left: '50%',
-  'margin-right': '-50%',
-  'z-index': '10000'
+  margin: '10px'
 };
 
 class LiveStream extends React.Component {
@@ -59,10 +44,6 @@ class LiveStream extends React.Component {
       connections: [],
       enterPeerId: ''
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleCall = this.handleCall.bind(this);
   }
 
   componentWillMount() {
@@ -78,10 +59,9 @@ class LiveStream extends React.Component {
 
     this.state.peer.on('call', (call) => {
       call.answer();
-      console.log('got a call', call);
-      // this.handleCall(call)
+      // console.log('got a call', call);
       call.on('stream', (stream) => {
-        console.log('getting a stream', stream);
+        // console.log('getting a stream', stream);
         this.setState({src: window.URL.createObjectURL(stream)});
       });
     });
@@ -94,42 +74,17 @@ class LiveStream extends React.Component {
     console.log(this.props.peerId);
   }
 
-  handleChange(event) {
-    console.log('update form value');
-    this.setState({enterPeerId: event.target.value});
-  }
-
-  handleSubmit(event) {
-    // event.preventDefault();
-    this.setState({peerId: this.state.enterPeerId});
-  }
-
-  // handleCall(call) {
-  //   call.on('stream', (stream) => {
-  //     console.log('getting a stream', stream);
-  //     this.state.stream = stream;
-  //     this.state.src = window.URL.createObjectURL(stream);
-  //   });
-  // }
-
-
   render() {
     return (
       <div>
         <video 
         autoPlay
         src={this.state.src}
-        style={currentVideoStyle}></video>
+        style={currentVideoStyle}>
+        </video>
       </div>
     );
   }
 };
 
 export default LiveStream;
-        //   <label>
-        //     PEERID:
-        //     <input type="text" name="name" value={this.state.enterPeerId} onChange={this.handleChange}/>
-        //   </label>
-        //   <input type="button" value="Submit" onClick={this.handleSubmit}/>
-        // </form>
-        // <button type="button" onClick={this.handleCall}>CALL</button>
