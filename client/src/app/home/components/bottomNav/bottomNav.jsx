@@ -4,6 +4,7 @@ import Paper from 'material-ui/Paper';
 import FriendsIcon from 'material-ui/svg-icons/social/people';
 import CreateIcon from 'material-ui/svg-icons/content/add-circle-outline';
 import LedgerIcon from 'material-ui/svg-icons/editor/monetization-on';
+import {Link} from 'react-router';
 
 const friendsIcon = <FriendsIcon />;
 const createIcon = <CreateIcon />;
@@ -19,9 +20,14 @@ const style = {
   width: '100%'
 }
 
+const linkStyle = {
+  textDecoration:'none',
+  margin: '0'
+};
+
 class BottomNav extends Component {
   state = {
-    selectedIndex: 0,
+    selectedIndex: null,
   };
 
   select = (index) => this.setState({selectedIndex: index});
@@ -35,11 +41,16 @@ class BottomNav extends Component {
             icon={friendsIcon}
             onTouchTap={() => this.select(0)}
           />
+
           <BottomNavigationItem
-            label="Create"
             icon={createIcon}
+            label="Create"
+            style={{textAlign: 'center'}}
+            containerElement={<Link to='/schedule'></Link>}
             onTouchTap={() => this.select(1)}
-          />
+          >
+          </BottomNavigationItem>
+
           <BottomNavigationItem
             label="Ledger"
             icon={ledgerIcon}
