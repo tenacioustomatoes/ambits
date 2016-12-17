@@ -5,7 +5,6 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
-import {deepOrange500} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -19,6 +18,7 @@ import Drawer from 'material-ui/Drawer';
 import {Link} from 'react-router';
 import CustomHomeIcon from './home/icons/homeIcon.jsx';
 import IconButton from 'material-ui/IconButton';
+import BottomNav from './home/components/bottomNav/bottomNav.jsx';
 
 const styles = {
   container: {
@@ -103,6 +103,7 @@ class Main extends Component {
           />
           {LoginModal}
           {this.props.children}
+          <BottomNav />
         </div>
       </MuiThemeProvider>
     );
