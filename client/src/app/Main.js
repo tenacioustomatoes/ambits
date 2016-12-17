@@ -27,7 +27,7 @@ const styles = {
 
 
 var custom_darkBaseTheme = darkBaseTheme;
-custom_darkBaseTheme.palette.primary1Color = '#ad0c29';
+custom_darkBaseTheme.palette.primary1Color = '#9f0026';
 custom_darkBaseTheme.palette.accent1Color = '#ffffff';
 custom_darkBaseTheme.palette.textColor = '#ffffff';
 custom_darkBaseTheme.palette.secondaryTextColor = '#ffffff';
