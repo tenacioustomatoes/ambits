@@ -13,7 +13,7 @@ const ledgerIcon = <LedgerIcon />;
 const homeIcon = <HomeIcon />;
 
 const style = {
-  position: 'absolute',
+  position: 'fixed',
   top: '97.3%',
   left: '50%',
   height: '50px',
