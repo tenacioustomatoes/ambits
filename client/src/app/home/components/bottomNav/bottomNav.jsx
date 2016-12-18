@@ -13,12 +13,13 @@ const ledgerIcon = <LedgerIcon />;
 const homeIcon = <HomeIcon />;
 
 const style = {
-  position: 'fixed',
+  position: 'absolute',
   top: '97.3%',
   left: '50%',
   height: '50px',
   transform: 'translate(-50%, -50%)',
-  width: '100%'
+  width: '100%',
+  zIndex: '2000'
 }
 
 const linkStyle = {
@@ -35,7 +36,7 @@ class BottomNav extends Component {
 
   render() {
     return (
-      <Paper zDepth={5} style={style}>
+      <Paper style={style}>
         <BottomNavigation selectedIndex={this.state.selectedIndex} style={{backgroundColor: '#737373'}}>
           <BottomNavigationItem
             label="Friends"

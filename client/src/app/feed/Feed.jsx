@@ -6,15 +6,11 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Snackbar from 'material-ui/Snackbar';
 import AmbitList from '../checkin/components/ambitList.jsx';
 
-const cardStyle = {
-  'margin': '10px'
-};
-
 export default class Feed extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: window.UserName,
+			username: 'Forrest Murray',
 			ambits: []
 		}
 	}
@@ -26,7 +22,7 @@ export default class Feed extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.ambits.map((ambit, i) => <AmbitGeneric style={cardStyle} key={i} username={this.state.username} data={ambit}/>)}
+				{this.state.ambits.map((ambit, i) => <AmbitGeneric key={i} username={this.state.username} data={ambit}/>)}
 			</div>
 		);
 	}
