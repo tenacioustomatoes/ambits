@@ -104,6 +104,6 @@ export default class OwnAmbitView extends React.Component {
   }
 };
 
-OwnAmbitView.contextTypes = {
+OwnAmbitView.contextTypes = { 
   user: React.PropTypes.string
 };

@@ -17,6 +17,7 @@ import * as loginCtrl from './login/loginCtrl';
 import Drawer from 'material-ui/Drawer';
 import {Link} from 'react-router';
 import BottomNav from './home/components/bottomNav/bottomNav.jsx';
+import Avatar from 'material-ui/Avatar';
 
 const styles = {
   container: {
@@ -98,6 +99,7 @@ class Main extends Component {
             title='Ambet'
             iconElementRight={logOutButton}
             showMenuIconButton={false}
+            children={<div><Avatar />{this.state.user}</div>}
           />
           {LoginModal}
           {this.props.children}
