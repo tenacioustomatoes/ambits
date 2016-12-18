@@ -17,7 +17,9 @@ import * as loginCtrl from './login/loginCtrl';
 import Drawer from 'material-ui/Drawer';
 import {Link} from 'react-router';
 import BottomNav from './home/components/bottomNav/bottomNav.jsx';
+import FriendsDrawer from './home/components/friends/friends.jsx';
 import Avatar from 'material-ui/Avatar';
+
 
 const styles = {
   container: {
@@ -41,8 +43,8 @@ class Main extends Component {
     super(props);
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
-      drawerOpen: false,
-      user: ''
+      friendsDrawerOpen: false,
+      user: null
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -85,16 +87,8 @@ class Main extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <Drawer
-            width={250}
-            open={this.state.drawerOpen}
-            docked={false}
-            onRequestChange={(drawerOpen) => this.setState({drawerOpen})}
-            >
-            <MenuItem onTouchTap={this.handleClose}>Home</MenuItem>
-            <MenuItem onTouchTap={this.handleClose}>Profile</MenuItem>
-            <MenuItem onTouchTap={this.handleClose}>Friends</MenuItem>
-          </Drawer>
+          <FriendsDrawer open={this.state.friendsDrawerOpen}/>
+
           <AppBar
             title='Ambet'
             iconElementRight={logOutButton}
