@@ -45,10 +45,11 @@ export default class OwnAmbitView extends React.Component {
     this.handleCheckinAmbit = this.handleCheckinAmbit.bind(this);
   }
   componentDidMount() {
-    Utils.getAllAmbits((data, error) => {
+    Utils.getUserAmbits(this.context.user, (data, error) => {
       if(error) {
         //send user feedback: no connection
       } else {
+        console.log(data);
         this.setState({ambits: data});
       }
     });
@@ -101,4 +102,8 @@ export default class OwnAmbitView extends React.Component {
         );
     }
   }
+};
+
+OwnAmbitView.contextTypes = { 
+  user: React.PropTypes.string
 };

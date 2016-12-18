@@ -136,6 +136,18 @@ export const getAllAmbits = function(callback) {
   });
 };
 
+export const getUserAmbits = function(user, callback) {
+  axios({
+    method: 'get', 
+    url: url + '/ambits:user',
+    contentType: 'application/json'
+  }).then(res => {
+    callback(decorateAmbits(res.data));
+  }).catch(err => {
+    throw err;
+  })
+}
+
 
 export const checkinAmbit = function(ambit, successCb,errorCb) {
   //get current location

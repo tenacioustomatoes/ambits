@@ -17,7 +17,11 @@ import * as loginCtrl from './login/loginCtrl';
 import Drawer from 'material-ui/Drawer';
 import {Link} from 'react-router';
 import BottomNav from './home/components/bottomNav/bottomNav.jsx';
+<<<<<<< HEAD
 import FriendsDrawer from './home/components/friends/friends.jsx';
+=======
+import Avatar from 'material-ui/Avatar';
+>>>>>>> e861f84987df48833c6c78aa6f35d93a0d4fd1e3
 
 const styles = {
   container: {
@@ -37,8 +41,8 @@ var muiTheme = getMuiTheme(custom_darkBaseTheme);
 
 
 class Main extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
       friendsDrawerOpen: true,
@@ -66,6 +70,10 @@ class Main extends Component {
     this.setState({drawerOpen: false});
   }
 
+  getChildContext() {
+    return {user: this.state.user};
+  }
+
   render() {
     window.Username = this.state.user;
     const logOutButton = this.state.isLoggedIn ?
@@ -87,6 +95,7 @@ class Main extends Component {
             title='Ambet'
             iconElementRight={logOutButton}
             showMenuIconButton={false}
+            children={<div><Avatar />{this.state.user}</div>}
           />
           {LoginModal}
           {this.props.children}
@@ -96,5 +105,9 @@ class Main extends Component {
     );
   }
 }
+
+Main.childContextTypes = {
+  user: React.PropTypes.string
+};
 // onLeftIconButtonTouchTap={this.toggleDrawer}
 export default Main;

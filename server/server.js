@@ -65,7 +65,7 @@ app.set('view engine', 'html');
 // Also, probably, to be rehandled in an external routehandler/ctrlrs
 app.get('/ambits', ambitHelper.getAmbits);
 app.post('/ambits', ambitHelper.addAmbit);
-
+app.get('/ambits:id', ambitHelper.getUserAmbits);
 app.post('/ambits/:id', ambitHelper.saveCheckIn);
 app.put('/ambits/:id', ambitHelper.addComment);
 
@@ -77,6 +77,8 @@ app.put('/ambits/:id', ambitHelper.addComment);
 app.get('/live', liveStreamHelper.retrieveAllLiveStreams);
 app.post('/live', liveStreamHelper.addLiveStream);
 app.post('/live/delete', liveStreamHelper.removeLiveStream);
+
+app.put('/placeBet', ambitHelper.placeBet);
 
 app.post('/register', ctrlAuth.register);
 app.post('/login', ctrlAuth.login);
