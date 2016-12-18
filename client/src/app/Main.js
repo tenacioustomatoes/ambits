@@ -17,11 +17,9 @@ import * as loginCtrl from './login/loginCtrl';
 import Drawer from 'material-ui/Drawer';
 import {Link} from 'react-router';
 import BottomNav from './home/components/bottomNav/bottomNav.jsx';
-<<<<<<< HEAD
 import FriendsDrawer from './home/components/friends/friends.jsx';
-=======
 import Avatar from 'material-ui/Avatar';
->>>>>>> e861f84987df48833c6c78aa6f35d93a0d4fd1e3
+
 
 const styles = {
   container: {
@@ -45,7 +43,7 @@ class Main extends Component {
     super(props);
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
-      friendsDrawerOpen: true,
+      friendsDrawerOpen: false,
       user: null
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
