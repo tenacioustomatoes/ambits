@@ -130,3 +130,16 @@ module.exports.collectWinnings = function(req, res, next) {
   })
   .catch(() => console.error('Error collecting winnings'));
 };
+
+module.exports.getBalance = function(req, res, next) {
+  var username = req.params.username;
+  console.log(username);
+  findUser({'username': username}, 'tokenBalance')
+  .then(result => {
+    console.log('Sent balance back to client', result);
+    res.send(result);
+  })
+  .catch(err => {
+    console.error('Error sending balance back to client');
+  });
+}
