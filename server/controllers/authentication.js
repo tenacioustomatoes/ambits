@@ -12,6 +12,7 @@ module.exports = {
     var email = req.body.email;
     var username = req.body.username;
     var password = req.body.password;
+    var tokenBalance = req.body.tokenBalance;
 
     if (!email || !username || !password) {
       res.status(400).json({
@@ -29,7 +30,8 @@ module.exports = {
             return createUser({
               email: email,
               username: username,
-              password: password
+              password: password,
+              tokenBalance: tokenBalance
             });
           }
         })

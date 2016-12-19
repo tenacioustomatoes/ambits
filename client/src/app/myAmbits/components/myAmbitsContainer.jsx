@@ -69,14 +69,6 @@ class MyAmbitsContainer extends React.Component {
     });
   }
 
-  // getAmbits() {
-  //   Utils.getAllAmbits((data) => {
-  //     this.setState({
-  //       ambits: data
-  //     });
-  //   });
-  // }
-
   handleCreatePeerConnection(ambitName, ambitRefId) {
     this.setState({broadcast: true});
     this.setState({broadcastAmbit: ambitRefId});
@@ -130,11 +122,3 @@ class MyAmbitsContainer extends React.Component {
 };
 
 export default MyAmbitsContainer;
-
-// /<Controls handleCreateAmbit={this.handleCreateAmbit}/>
-            // <RaisedButton
-            // onTouchTap={this.handleCreateAmbit}
-            // buttonStyle={createStyle}
-            // containerElement={<Link to='/broadcast'/>}
-            // fullWidth = {true}
-            // >Create Ambit</RaisedButton>
