@@ -1,5 +1,6 @@
 var Ambit = require('./ambitModel.js');
 var q = require('q');
+var User = require('../users/userModel.js');
 // var Live = require('./liveModel.js');
 
 //Promisify some of the mongoose CRUD methods
@@ -9,6 +10,8 @@ var findAllAmbits = q.nbind(Ambit.find, Ambit);
 var createAmbit = q.nbind(Ambit.create, Ambit);
 var updateAmbit = q.nbind(Ambit.findByIdAndUpdate, Ambit);
 var updateBetAmbit = q.nbind(Ambit.findOneAndUpdate, Ambit);
+var updateUserWinnings = q.nbind(User.findOneAndUpdate, User);
+var findUser = q.nbind(User.findOne, User);
 // var createLiveStream = q.nbind(Live.create, Live);
 // var deleteLiveStream = q.nbind(Live.remove, Live);
 
@@ -96,23 +99,7 @@ module.exports.getUserAmbits = function(req, res, next) {
       next(error);
     });
 };
-// module.exports.addLiveStream = function(req, res, next) {
-//   var peerId = req.body.peerId;
-//   var user = req.body.user;
-//   var ambitId = req.body.ambitId;
-//   createLiveStream({
-//     user: user,
-//     ambitId: ambitId,
-//     peerId: peerId
-//   })
-//   .then(function(addedLive) {
-//     console.log('Stream saved:', peerId);
-//     res.send(addedLive);
-//   })
-//   .fail(function(error) {
-//     console.error('Error saving live stream to DB', error);
-//   });
-// };
+
 module.exports.placeBet = function(req, res, next) {
   var bet = req.body.bet;
   console.log('body is', req.body);
@@ -126,4 +113,20 @@ module.exports.placeBet = function(req, res, next) {
     .catch(function(error) {
       console.error('Error saving bet', error);
     });
+};
+
+module.exports.collectWinnings = function(req, res, next) {
+  var refId = req.body.ambitRefId;
+  console.log(refId);
+  var username = req.body.username;
+  findAmbit({'refId': refId}, 'bets')
+  .then(result => {
+    console.log(result);
+    var winnings = result.bets.reduce((accum, prev) => accum.betAmount + prev.betAmount);
+    console.log(winnings);
+    updateUserAmbit({'username': username}, {'tokenBalance': winnings + 1000}, {new: true})
+    .then(() => res.send('Updated user balance'))
+    .catch(() => console.error('Error updating user balace'));
+  })
+  .catch(() => console.error('Error collecting winnings'));
 };

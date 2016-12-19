@@ -60,7 +60,7 @@ export default class AmbitGeneric extends React.Component {
   handlePlaceBet() {
     this.setState({placeBet: !this.state.placeBet});
     console.log(this.state.placeBet);
-  };
+  }
 
   render () {
     let betContainer = null;

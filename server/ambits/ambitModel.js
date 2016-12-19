@@ -25,7 +25,7 @@ var ambitSchema = new Schema({
   startDate: Date,
   checkIns: [Date], // a history of successful check-ins//time (when during the day are you supposed to check in)
   messages: [messageSchema],
-  bettingOdds: String,
+  bettingOdds: Number,
   bets: [betSchema]
 });
 

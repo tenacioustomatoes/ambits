@@ -22,7 +22,7 @@ var Ambit = require('./ambits/ambitModel');
 // }
 
 var ctrlAuth = require('./controllers/authentication');
-
+  
 require('./config/passport');
 
 
@@ -79,6 +79,7 @@ app.post('/live', liveStreamHelper.addLiveStream);
 app.post('/live/delete', liveStreamHelper.removeLiveStream);
 
 app.put('/placeBet', ambitHelper.placeBet);
+app.put('/collectWinnings', ambitHelper.collectWinnings);
 
 app.post('/register', ctrlAuth.register);
 app.post('/login', ctrlAuth.login);

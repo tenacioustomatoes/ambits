@@ -45,7 +45,8 @@ class Login extends Component {
     var newUser = {
       email: this.state.email,
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      tokenBalance: 1000
     };
     loginCtrl.signup(newUser)
     .then(res => {
