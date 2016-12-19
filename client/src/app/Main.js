@@ -119,7 +119,7 @@ class Main extends Component {
             title='Ambet'
             iconElementRight={logOutButton}
             showMenuIconButton={false}
-            children={<div><Avatar />{this.state.user}</div>}
+
           />
           {LoginModal}
           {this.props.children}
@@ -137,6 +137,9 @@ class Main extends Component {
 
 Main.childContextTypes = {
   user: React.PropTypes.string
-};
+}
+//was in AppBar
+// };children={<div><Avatar />{this.state.user}</div>}
+
 // onLeftIconButtonTouchTap={this.toggleDrawer}
 export default Main;
