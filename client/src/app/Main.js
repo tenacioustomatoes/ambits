@@ -18,6 +18,7 @@ import Drawer from 'material-ui/Drawer';
 import {Link} from 'react-router';
 import BottomNav from './home/components/bottomNav/bottomNav.jsx';
 import FriendsDrawer from './home/components/friends/friends.jsx';
+import LedgerDrawer from './home/components/ledger/ledger.jsx';
 import Avatar from 'material-ui/Avatar';
 
 
@@ -44,6 +45,7 @@ class Main extends Component {
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
       friendsDrawerOpen: false,
+      ledgerDrawerOpen: true,
       user: null
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
@@ -88,8 +90,9 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <FriendsDrawer open={this.state.friendsDrawerOpen}/>
-
+          <LedgerDrawer open={this.state.ledgerDrawerOpen}/>
           <AppBar
+            style={{zIndex: '1500'}}
             title='Ambet'
             iconElementRight={logOutButton}
             showMenuIconButton={false}
