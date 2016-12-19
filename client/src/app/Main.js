@@ -48,7 +48,7 @@ class Main extends Component {
       ledgerDrawerOpen: false,
       user: null,
       previousIndex: null,
-      selectedIndex: 1,
+      selectedIndex: 0,
     };
     this.toggleLedgerDrawer = this.toggleLedgerDrawer.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -112,7 +112,7 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <FriendsDrawer open={this.state.friendsDrawerOpen}/>
-          <LedgerDrawer open={this.state.ledgerDrawerOpen} ledgerClose={this.handleClose}/>
+          <LedgerDrawer open={this.state.ledgerDrawerOpen} ledgerClose={this.handleClose} balace={}/>
           <AppBar
             style={{zIndex: '1500'}}
             title='Ambet'
