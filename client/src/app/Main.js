@@ -45,17 +45,22 @@ class Main extends Component {
     this.state = {
       isLoggedIn: !!loginCtrl.getJwt(),
       friendsDrawerOpen: false,
-      ledgerDrawerOpen: true,
-      user: null
+      ledgerDrawerOpen: false,
+      user: null,
+      previousIndex: null,
+      selectedIndex: 1,
     };
-    this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.toggleLedgerDrawer = this.toggleLedgerDrawer.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
 
-  toggleDrawer(e) {
-    console.log('toggled nav menu!');
-    e.preventDefault();
-    this.setState({drawerOpen: !this.state.drawerOpen});
+  toggleLedgerDrawer() {
+    // console.log('toggled ledger drawer!');
+    // e.preventDefault();
+    if (this.state.ledgerDrawerOpen) {
+      this.previousIndexSet();
+    }
+    this.setState({ledgerDrawerOpen: !this.state.ledgerDrawerOpen});
   }
 
   handleLogout() {
@@ -65,13 +70,30 @@ class Main extends Component {
     });
   }
 
-  handleClose(e) {
-    e.preventDefault();
-    this.setState({drawerOpen: false});
+  handleClose() {
+    // e.preventDefault();
+    this.setState({ledgerDrawerOpen: false});
+    this.previousIndexSet();
   }
 
   getChildContext() {
     return {user: this.state.user};
+  }
+
+  select = (index) => {
+    if (this.state.selectedIndex !== index) {
+      // console.log('new previous Index:', this.state.selectedIndex);
+      this.setState({previousIndex: this.state.selectedIndex});
+    }
+    this.setState({selectedIndex: index});
+  }
+
+  previousIndexSet() {
+    // console.log('change selected to previous!');
+    this.setState({
+      selectedIndex: this.state.previousIndex,
+      previousIndex: null
+    });
   }
 
   render() {
@@ -90,7 +112,7 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <FriendsDrawer open={this.state.friendsDrawerOpen}/>
-          <LedgerDrawer open={this.state.ledgerDrawerOpen}/>
+          <LedgerDrawer open={this.state.ledgerDrawerOpen} ledgerClose={this.handleClose}/>
           <AppBar
             style={{zIndex: '1500'}}
             title='Ambet'
@@ -100,7 +122,12 @@ class Main extends Component {
           />
           {LoginModal}
           {this.props.children}
-          <BottomNav />
+          <BottomNav
+            ledgerToggle={this.toggleLedgerDrawer}
+            setPrevious={this.previousIndexSet}
+            selectedIndex={this.state.selectedIndex}
+            select={this.select}
+          />
         </div>
       </MuiThemeProvider>
     );
