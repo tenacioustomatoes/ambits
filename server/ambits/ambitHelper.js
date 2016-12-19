@@ -102,12 +102,12 @@ module.exports.getUserAmbits = function(req, res, next) {
 
 module.exports.placeBet = function(req, res, next) {
   var bet = req.body.bet;
-  console.log('body is', req.body);
+  //console.log('body is', req.body);
   var refId = req.body.ambitRefId;
 
   updateBetAmbit({'refId': refId}, {$push: {'bets': bet}}, {new: true})
     .then(function(savedAmbit) {
-      console.log(savedAmbit);
+      //console.log(savedAmbit);
       res.send(savedAmbit);
     })
     .catch(function(error) {
@@ -117,26 +117,27 @@ module.exports.placeBet = function(req, res, next) {
 
 module.exports.collectWinnings = function(req, res, next) {
   var refId = req.body.ambitRefId;
-  console.log(refId);
+  // console.log(refId);
   var username = req.body.username;
   findAmbit({'refId': refId}, 'bets')
   .then(result => {
     console.log(result);
-    var winnings = result.bets.reduce((accum, prev) => accum.betAmount + prev.betAmount);
-    console.log(winnings);
+    // var winnings = result.bets.reduce((accum, prev) => accum.betAmount + prev.betAmount);
+    // console.log(winnings);
+    var winnings = result.bets[0].betAmount;
     updateUserAmbit({'username': username}, {'tokenBalance': winnings + 1000}, {new: true})
     .then(() => res.send('Updated user balance'))
-    .catch(() => console.error('Error updating user balace'));
+    .catch((err) => console.error('Error updating user balance', err));
   })
-  .catch(() => console.error('Error collecting winnings'));
+  .catch((err) => console.error('Error collecting winnings', err));
 };
 
 module.exports.getBalance = function(req, res, next) {
   var username = req.params.username;
-  console.log(username);
+  // console.log(username);
   findUser({'username': username}, 'tokenBalance')
   .then(result => {
-    console.log('Sent balance back to client', result);
+    console.log('Sent balance back to client', result.tokenBalance);
     res.send(result);
   })
   .catch(err => {

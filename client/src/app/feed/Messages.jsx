@@ -9,7 +9,7 @@ const Messages = (props) => (
     {props.data.map((message) => (
 	    	<ListItem
 	      primaryText={message.name}
-	      leftAvatar={<Avatar src="images/ok-128.jpg" />}
+	      leftAvatar={<Avatar src="https://smileculture.com/wp-content/uploads/2015/11/avatar.png" />}
 	      secondaryText={
             <p>
               {message.text}

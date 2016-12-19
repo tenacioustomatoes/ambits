@@ -48,7 +48,7 @@ class LiveStreamContainer extends React.Component {
     this.handleWatchStream = this.handleWatchStream.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     Utils.getAllStreams()
     .then(streams => {
       this.setState({streams: streams.data, loading: false});
