@@ -28,28 +28,22 @@ const linkStyle = {
 };
 
 class BottomNav extends Component {
-  state = {
-    selectedIndex: 1,
-  };
-
-  select = (index) => this.setState({selectedIndex: index});
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
       <Paper style={style}>
-        <BottomNavigation selectedIndex={this.state.selectedIndex} style={{backgroundColor: '#737373'}}>
-          <BottomNavigationItem
-            label="Friends"
-            icon={friendsIcon}
-            onTouchTap={() => this.select(0)}
-          />
+        <BottomNavigation selectedIndex={this.props.selectedIndex} style={{backgroundColor: '#737373'}}>
+
 
           <BottomNavigationItem
             label="Home"
             icon={homeIcon}
             style={{textAlign: 'center'}}
             containerElement={<Link to='/'></Link>}
-            onTouchTap={() => this.select(1)}
+            onTouchTap={() => this.props.select(0)}
           />
 
           <BottomNavigationItem
@@ -57,18 +51,24 @@ class BottomNav extends Component {
             label="Create"
             style={{textAlign: 'center'}}
             containerElement={<Link to='/schedule'></Link>}
-            onTouchTap={() => this.select(2)}
+            onTouchTap={() => this.props.select(1)}
           />
 
           <BottomNavigationItem
             label="Ledger"
             icon={ledgerIcon}
-            onTouchTap={() => this.select(3)}
+            onTouchTap={() => {this.props.select(2); this.props.ledgerToggle();}}
           />
         </BottomNavigation>
       </Paper>
     );
   }
 }
+
+// <BottomNavigationItem
+//   label="Friends"
+//   icon={friendsIcon}
+//   onTouchTap={() => this.props.select(0)}
+// />
 
 export default BottomNav;
