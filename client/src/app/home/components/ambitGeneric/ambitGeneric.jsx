@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardText, CardMedia, CardTitle} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import Toggle from 'material-ui/Toggle';
 import Messages from '../../../feed/Messages.jsx';
 import TextField from 'material-ui/TextField';
@@ -51,7 +52,7 @@ export default class AmbitGeneric extends React.Component {
   };
 
   handleSubmit = () => {
-    var data = {avatar: 'no avatar', name: this.props.username, text: this.state.comment};
+    var data = {avatar: 'https://smileculture.com/wp-content/uploads/2015/11/avatar.png', name: this.props.username, text: this.state.comment};
     Utils.submitComment(this.state.ambitId, data, (res) => {
       this.setState({messages: res.data.messages});
     });
@@ -59,7 +60,7 @@ export default class AmbitGeneric extends React.Component {
 
   handlePlaceBet() {
     this.setState({placeBet: !this.state.placeBet});
-    console.log(this.state.placeBet);
+    // console.log(this.state.placeBet);
   }
 
   render () {
@@ -74,8 +75,8 @@ export default class AmbitGeneric extends React.Component {
       <Card expanded={this.state.expanded} style={cardStyle} onExpandChange={this.handleExpandChange}>
         <CardHeader
           title={this.props.data.name}
-          subtitle="Subtitle"
-          avatar="images/ok-128.jpg"
+          subtitle={this.props.data.owner}
+          avatar="http://www.19130fitness.com/wp-content/uploads/2015/07/crossfit-barbell.png"
           actAsExpander={true}
           showExpandableButton={false}
         />
@@ -85,10 +86,10 @@ export default class AmbitGeneric extends React.Component {
             multiLine={true}
             onChange={this.handleCommentChange}
             />
-          <FlatButton label="SEND" onTouchTap={this.handleSubmit}/>
+          <RaisedButton label="SEND" onTouchTap={this.handleSubmit} primary={true}/>
         </CardText>
         <CardActions>
-          <FlatButton label="BET" onTouchTap={this.handlePlaceBet} />
+          <RaisedButton label="BET" onTouchTap={this.handlePlaceBet} primary={true}/>
         </CardActions>
       {betContainer}
       </Card>

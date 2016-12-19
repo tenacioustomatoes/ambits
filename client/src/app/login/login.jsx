@@ -5,7 +5,6 @@ import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 import * as loginCtrl from './loginCtrl';
 
-window.UserName = 'Emerson';
 
 class Login extends Component {
   constructor(props, context) {
@@ -51,9 +50,9 @@ class Login extends Component {
       password: this.state.password,
       tokenBalance: 1000
     };
-    window.UserName = this.state.username;
     loginCtrl.signup(newUser)
     .then(res => {
+    window.UserName = this.state.email;
       this.setState({
         loginIsOpen: false
       });

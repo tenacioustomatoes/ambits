@@ -52,7 +52,7 @@ export default class ScheduleContainer extends React.Component {
       this.setState({
         name: nameInput.target.value
       });
-      console.log(this.state.name);
+      // console.log(this.state.name);
   }
 
 // Need to reformat date object to not include current time before passing into database
@@ -60,7 +60,7 @@ export default class ScheduleContainer extends React.Component {
     this.setState({
       startDate: date
     });
-    console.log(this.state);
+    // console.log(this.state);
   }
 
 
@@ -75,7 +75,7 @@ export default class ScheduleContainer extends React.Component {
   onScheduleAmbit(e) {
     
     var ambitState = {
-      user: this.context.user,
+      owner: 'David',
       name: this.state.name,
       coords: this.state.coords,
       weekdays: this.state.weekdays,
@@ -83,7 +83,7 @@ export default class ScheduleContainer extends React.Component {
       startTime: this.state.startTime,
       checkIns: this.state.checkIns
     }
-    console.log(ambitState);
+    // console.log(ambitState);
 
     Utils.postAmbit(ambitState, function() {
       console.log('posted!');

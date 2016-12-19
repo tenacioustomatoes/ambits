@@ -13,6 +13,7 @@ module.exports = {
     var username = req.body.username;
     var password = req.body.password;
     var tokenBalance = req.body.tokenBalance;
+    console.log(tokenBalance);
 
     if (!email || !username || !password) {
       res.status(400).json({

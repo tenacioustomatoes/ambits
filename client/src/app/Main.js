@@ -101,10 +101,10 @@ class Main extends Component {
   }
 
   getBalance(username) {
-    console.log(window.UserName);
+    // console.log(window.UserName);
     axios.get('/balance/' + window.UserName)
     .then(results => {
-      console.log(results);
+      // console.log(results);
       this.setState({balance: results.data.tokenBalance});
     })
     .catch(err => {
