@@ -21,6 +21,8 @@ import FriendsDrawer from './home/components/friends/friends.jsx';
 import LedgerDrawer from './home/components/ledger/ledger.jsx';
 import Avatar from 'material-ui/Avatar';
 
+import axios from 'axios';
+
 
 const styles = {
   container: {
@@ -58,6 +60,7 @@ class Main extends Component {
   toggleLedgerDrawer() {
     // console.log('toggled ledger drawer!');
     // e.preventDefault();
+    this.getBalance(window.UserName);
     if (this.state.ledgerDrawerOpen) {
       this.previousIndexSet();
     }
@@ -94,6 +97,18 @@ class Main extends Component {
     this.setState({
       selectedIndex: this.state.previousIndex,
       previousIndex: null
+    });
+  }
+
+  getBalance(username) {
+    console.log(window.UserName);
+    axios.get('/balance/' + window.UserName)
+    .then(results => {
+      console.log(results);
+      this.setState({balance: results.data.tokenBalance});
+    })
+    .catch(err => {
+      console.error('Error fetching user balance');
     });
   }
 

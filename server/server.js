@@ -80,9 +80,11 @@ app.post('/live/delete', liveStreamHelper.removeLiveStream);
 
 app.put('/placeBet', ambitHelper.placeBet);
 app.put('/collectWinnings', ambitHelper.collectWinnings);
+app.get('/balance/:username', ambitHelper.getBalance);
 
 app.post('/register', ctrlAuth.register);
 app.post('/login', ctrlAuth.login);
+
 
 //prevents a "cannot GET" error on page reload by redirecting to main page
 app.get('*', function (req, res) {
